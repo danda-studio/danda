@@ -15,7 +15,7 @@ export interface ButtonProps extends Omit<BaseButtonProps, "className"> {
 const variantClassName: Record<Variant, string> = {
   primary: "bg-brand text-white",
   dark: "bg-black text-white",
-  light: "bg-[var(--color-gray-200)] text-black",
+  light: "bg-[var(--dd-gray-200)] text-black",
 };
 
 export function Button({ variant = "primary", leadingIcon, trailingIcon, className, children, ...props }: ButtonProps) {
@@ -24,19 +24,19 @@ export function Button({ variant = "primary", leadingIcon, trailingIcon, classNa
       className={cn(
         "inline-flex cursor-pointer items-center justify-center whitespace-nowrap font-medium leading-[1.1] tracking-[-0.025rem]",
         leadingIcon
-          ? "gap-[1rem] rounded-[1.25rem] py-[0.625rem] pr-[1.5rem] pl-[0.625rem] text-[1.25rem]"
-          : "h-[2.75rem] gap-[0.625rem] rounded-[1rem] px-[1.25rem] py-[1rem] text-[1rem]",
+          ? "gap-4 rounded-[1.25rem] py-[0.625rem] pr-6 pl-[0.625rem] text-[1.25rem]"
+          : "h-11 gap-[0.625rem] rounded-[1rem] px-5 py-4 text-[1rem]",
         variantClassName[variant],
         className,
       )}
       {...props}
     >
       {leadingIcon && (
-        <span className="flex size-[3rem] shrink-0 items-center justify-center overflow-clip rounded-[1rem] bg-white">
+        <span className="flex size-12 shrink-0 items-center justify-center overflow-clip rounded-[1rem] bg-white">
           {leadingIcon}
         </span>
       )}
-      {children}
+      <span className="flex flex-1 items-center justify-center">{children}</span>
       {trailingIcon}
     </BaseButton>
   );

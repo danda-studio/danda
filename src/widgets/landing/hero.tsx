@@ -17,10 +17,10 @@ export function Hero() {
         </div>
       </div>
 
-      <p className="absolute top-[11.5rem] left-1/2 w-[45.375rem] -translate-x-1/2 text-center font-[family-name:var(--font-manrope-sans)] text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] text-black [word-break:break-word]">
+      <p className="absolute top-[11.5rem] left-1/2 w-[45.375rem] -translate-x-1/2 text-center font-(family-name:--font-manrope-sans) text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] text-black [word-break:break-word]">
         Мы берем на себя сложность.От сайта до сложного сервиса или приложения
       </p>
-      <p className="absolute top-[8.4375rem] left-[45.59375rem] -translate-x-1/2 text-center font-[family-name:var(--font-manrope-sans)] text-[1.25rem] leading-[1.2] font-medium whitespace-nowrap text-black">
+      <p className="absolute top-[8.4375rem] left-[45.59375rem] -translate-x-1/2 text-center font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium whitespace-nowrap text-black">
         Студия разработки полного цикла
       </p>
 
@@ -49,11 +49,11 @@ export function Hero() {
 
       <div className="absolute top-[41.125rem] left-0 flex h-[26.125rem] w-[90rem] items-center justify-center">
         <div className="flex-none -scale-y-100">
-          <div className="h-[26.125rem] w-[90rem] bg-gradient-to-b from-white from-[27.195%] to-[var(--color-fade-white-transparent)] to-[63.278%]" />
+          <div className="h-[26.125rem] w-[90rem] bg-gradient-to-b from-white from-[27.195%] to-(--dd-fade-white-transparent) to-[63.278%]" />
         </div>
       </div>
 
-      <p className="absolute top-[45.25rem] left-[88.5rem] w-[20.75rem] -translate-x-full text-right font-[family-name:var(--font-manrope-sans)] leading-[0] font-medium tracking-[-0.0625rem] text-[var(--color-gray-300)]">
+      <p className="absolute top-[45.25rem] left-[88.5rem] w-[20.75rem] -translate-x-full text-right font-(family-name:--font-manrope-sans) leading-[0] font-medium tracking-[-0.0625rem] text-(--dd-gray-300)">
         <span className="text-[1.25rem] leading-[1.2]">Вы получаете понятное цифровое решение. </span>
         <span className="text-[1.25rem] leading-[1.2] text-black">Для бизнеса, который ценит ясность и стабильность</span>
       </p>

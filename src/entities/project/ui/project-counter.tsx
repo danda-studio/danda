@@ -10,7 +10,7 @@ export interface ProjectCounterProps {
 
 export function ProjectCounter({ current, total, className, numberClassName, totalClassName }: ProjectCounterProps) {
   return (
-    <div className={cn("flex items-center font-(family-name:--font-manrope-sans) font-medium leading-[0] text-white whitespace-nowrap", className)}>
+    <div className={cn("flex items-center font-(family-name:--font-manrope-sans) font-medium leading-0 text-white whitespace-nowrap", className)}>
       <div className={cn("flex shrink-0 flex-col justify-center", numberClassName)}>
         <p className="leading-[1.2]">{current}</p>
       </div>

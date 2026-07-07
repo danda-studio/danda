@@ -34,10 +34,10 @@ function Divider() {
 export function ProcessSection() {
   return (
     <>
-      <p className="absolute top-[129.25rem] left-[45rem] w-[61.375rem] -translate-x-1/2 text-center font-[family-name:var(--font-manrope-sans)] text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] text-black [word-break:break-word]">
+      <p className="absolute top-[129.25rem] left-[45rem] w-[61.375rem] -translate-x-1/2 text-center font-(family-name:--font-manrope-sans) text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] text-black [word-break:break-word]">
         Прозрачный процесс, фиксированные этапы и предсказуемый результат
       </p>
-      <p className="absolute top-[126.25rem] left-[45.3125rem] -translate-x-1/2 text-center font-[family-name:var(--font-manrope-sans)] text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] whitespace-nowrap text-muted">
+      <p className="absolute top-[126.25rem] left-[45.3125rem] -translate-x-1/2 text-center font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] whitespace-nowrap text-muted">
         Как мы работаем
       </p>
 
@@ -46,7 +46,7 @@ export function ProcessSection() {
 
       <div className="absolute top-[136.3125rem] left-[6.5rem] h-[3.9375rem] w-[6.75rem]">
         <div className="absolute top-[1.67563rem] left-[0.25125rem] flex items-center justify-center rounded-[1.82813rem] bg-brand px-[1rem] py-[0.5rem] backdrop-blur-[0.82031rem]">
-          <p className="font-[family-name:var(--font-manrope-sans)] text-[1rem] font-medium tracking-[-0.03rem] whitespace-nowrap text-white">
+          <p className="font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.03rem] whitespace-nowrap text-white">
             Developer
           </p>
         </div>
@@ -63,7 +63,7 @@ export function ProcessSection() {
 
       <div className="absolute top-[128.75rem] left-[79.375rem] h-[3.9375rem] w-[6.75rem]">
         <div className="absolute top-[1.67563rem] left-[0.25125rem] flex items-center justify-center rounded-[1.82813rem] bg-brand px-[1rem] py-[0.5rem] backdrop-blur-[0.82031rem]">
-          <p className="font-[family-name:var(--font-manrope-sans)] text-[1rem] font-medium tracking-[-0.03rem] whitespace-nowrap text-white">
+          <p className="font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.03rem] whitespace-nowrap text-white">
             Designer
           </p>
         </div>
@@ -87,7 +87,7 @@ export function ProcessSection() {
         ))}
       </div>
 
-      <p className="absolute top-[151.5rem] left-[1.5rem] w-[20.75rem] font-[family-name:var(--font-manrope-sans)] leading-[0] font-medium tracking-[-0.0625rem] text-muted [word-break:break-word]">
+      <p className="absolute top-[151.5rem] left-[1.5rem] w-[20.75rem] font-(family-name:--font-manrope-sans) leading-[0] font-medium tracking-[-0.0625rem] text-muted [word-break:break-word]">
         <span className="text-[1.25rem] leading-[1.2]">Вы получаете понятное цифровое решение. </span>
         <span className="text-[1.25rem] leading-[1.2] text-black">Для бизнеса, который ценит ясность и стабильность</span>
       </p>

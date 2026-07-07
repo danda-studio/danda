@@ -18,18 +18,18 @@ export function ServicesBanner() {
       <div className="absolute top-[207.75rem] left-1/2 h-[47.375rem] w-[87rem] -translate-x-1/2 overflow-clip rounded-[2rem]">
         <div className="absolute flex h-[30.21475rem] items-center justify-center left-[27.62125rem] top-[9.47125rem] w-[29.94156rem]" data-node-id="375:1274">
           <div className="-rotate-14 flex-none">
-            <div className="bg-[var(--color-blue-500)] h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--color-shadow-transparent)] w-[24.625rem]">
+            <div className="bg-[var(--dd-blue-500)] h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--dd-shadow-transparent)] w-[24.625rem]">
               <div className="[word-break:break-word] absolute content-stretch flex flex-col gap-[1rem] items-start leading-[1.2] left-[1.5rem] top-[15.6875rem] tracking-[-0.0625rem]" data-node-id="375:1275" data-name="Text">
-                <p className="font-[family-name:var(--font-manrope-sans)] font-semibold min-w-full relative shrink-0 text-[2rem] text-black w-[min-content]" data-node-id="375:1276">
+                <p className="font-(family-name:--font-manrope-sans) font-semibold min-w-full relative shrink-0 text-[2rem] text-black w-[min-content]" data-node-id="375:1276">
                   Сайты и лендинги
                 </p>
-                <p className="font-[family-name:var(--font-manrope-sans)] font-medium relative shrink-0 text-[var(--color-gray-400)] text-[1.25rem] w-[17.375rem]" data-node-id="375:1277">
+                <p className="font-(family-name:--font-manrope-sans) font-medium relative shrink-0 text-[var(--dd-gray-400)] text-[1.25rem] w-[17.375rem]" data-node-id="375:1277">
                   Проектируем и разрабатываем сайты и лендинги под задачи бизнеса
                 </p>
               </div>
               <div className="absolute flex h-[22.90944rem] items-center justify-center left-[3.13188rem] mix-blend-luminosity top-[-8.08875rem] w-[23.90806rem]" data-node-id="375:1278">
                 <div className="-rotate-10 flex-none">
-                  <div className="bg-[var(--color-glow-blue)] blur-[1.22188rem] h-[19.59131rem] relative rounded-[2.75rem] w-[20.82238rem]" />
+                  <div className="bg-[var(--dd-glow-blue)] blur-[1.22188rem] h-[19.59131rem] relative rounded-[2.75rem] w-[20.82238rem]" />
                 </div>
               </div>
             </div>
@@ -37,18 +37,18 @@ export function ServicesBanner() {
         </div>
         <div className="absolute flex h-[26.65688rem] items-center justify-center left-[29.4375rem] top-[11.25rem] w-[26.30894rem]" data-node-id="375:1279">
           <div className="-rotate-4 flex-none">
-            <div className="bg-[var(--color-blue-400)] h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--color-shadow-transparent)] w-[24.625rem]">
+            <div className="bg-[var(--dd-blue-400)] h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--dd-shadow-transparent)] w-[24.625rem]">
               <div className="[word-break:break-word] absolute content-stretch flex flex-col gap-[1rem] items-start leading-[1.2] left-[1.5rem] top-[15.6875rem] tracking-[-0.0625rem]" data-node-id="375:1280" data-name="Text">
-                <p className="font-[family-name:var(--font-manrope-sans)] font-semibold min-w-full relative shrink-0 text-[2rem] text-black w-[min-content]" data-node-id="375:1281">
+                <p className="font-(family-name:--font-manrope-sans) font-semibold min-w-full relative shrink-0 text-[2rem] text-black w-[min-content]" data-node-id="375:1281">
                   Сайты и лендинги
                 </p>
-                <p className="font-[family-name:var(--font-manrope-sans)] font-medium relative shrink-0 text-[var(--color-gray-400)] text-[1.25rem] w-[17.375rem]" data-node-id="375:1282">
+                <p className="font-(family-name:--font-manrope-sans) font-medium relative shrink-0 text-[var(--dd-gray-400)] text-[1.25rem] w-[17.375rem]" data-node-id="375:1282">
                   Проектируем и разрабатываем сайты и лендинги под задачи бизнеса
                 </p>
               </div>
               <div className="absolute flex h-[22.90944rem] items-center justify-center left-[3.13188rem] mix-blend-luminosity top-[-8.08875rem] w-[23.90806rem]" data-node-id="375:1283">
                 <div className="-rotate-10 flex-none">
-                  <div className="bg-[var(--color-glow-blue)] blur-[1.22188rem] h-[19.59131rem] relative rounded-[2.75rem] w-[20.82238rem]" />
+                  <div className="bg-[var(--dd-glow-blue)] blur-[1.22188rem] h-[19.59131rem] relative rounded-[2.75rem] w-[20.82238rem]" />
                 </div>
               </div>
             </div>
@@ -56,15 +56,15 @@ export function ServicesBanner() {
         </div>
         <div className="absolute flex h-[26.65688rem] items-center justify-center left-[29.4375rem] top-[11.25rem] w-[26.30894rem]" data-node-id="375:1284">
           <div className="flex-none rotate-4">
-            <div className="bg-[var(--color-blue-100)] h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--color-shadow-transparent)] w-[24.625rem]">
-              <p className="[word-break:break-word] absolute bottom-[4.25rem] font-[family-name:var(--font-manrope-sans)] font-semibold leading-[1.2] left-[1.62313rem] text-[2rem] text-black tracking-[-0.0625rem] translate-y-full w-[16.75rem]" data-node-id="375:1285">
+            <div className="bg-[var(--dd-blue-100)] h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--dd-shadow-transparent)] w-[24.625rem]">
+              <p className="[word-break:break-word] absolute bottom-[4.25rem] font-(family-name:--font-manrope-sans) font-semibold leading-[1.2] left-[1.62313rem] text-[2rem] text-black tracking-[-0.0625rem] translate-y-full w-[16.75rem]" data-node-id="375:1285">
                 Дизайн
               </p>
               <div className="absolute contents left-[1.68375rem] top-[2.20063rem]" data-node-id="375:1286">
                 <div className="-translate-x-1/2 absolute contents left-[calc(50%-0.16rem)] top-[4.07562rem]" data-node-id="375:1287">
                   <div className="absolute flex h-[12.35869rem] items-center justify-center left-[2.1925rem] top-[4.58437rem] w-[19.91931rem]" data-node-id="375:1288">
                     <div className="-scale-y-100 flex-none rotate-180">
-                      <div className="bg-[var(--color-blue-50)] h-[12.35869rem] relative rounded-[0.58156rem] w-[19.91931rem]" />
+                      <div className="bg-[var(--dd-blue-50)] h-[12.35869rem] relative rounded-[0.58156rem] w-[19.91931rem]" />
                     </div>
                   </div>
                   <div className="absolute flex h-[8.68163rem] items-center justify-center left-[7.11813rem] top-[7.2375rem] w-[13.945rem]" data-node-id="375:1289">
@@ -75,39 +75,39 @@ export function ServicesBanner() {
                     </div>
                   </div>
                   <div className="absolute contents left-[2.70125rem] top-[5.05688rem]" data-node-id="375:1292">
-                    <div className="absolute backdrop-blur-[0.56344rem] border border-[var(--color-blue-600)] border-solid left-[2.84688rem] size-[1.70838rem] top-[5.23875rem]" data-node-id="375:1293" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[2.70125rem] rounded-[0.03637rem] size-[0.3635rem] top-[5.05688rem]" data-node-id="375:1294" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[2.70125rem] rounded-[0.03637rem] size-[0.3635rem] top-[6.72875rem]" data-node-id="375:1295" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[4.3375rem] rounded-[0.03637rem] size-[0.3635rem] top-[5.05688rem]" data-node-id="375:1296" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[4.3375rem] rounded-[0.03637rem] size-[0.3635rem] top-[6.72875rem]" data-node-id="375:1297" />
+                    <div className="absolute backdrop-blur-[0.56344rem] border border-[var(--dd-blue-600)] border-solid left-[2.84688rem] size-[1.70838rem] top-[5.23875rem]" data-node-id="375:1293" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[2.70125rem] rounded-[0.03637rem] size-[0.3635rem] top-[5.05688rem]" data-node-id="375:1294" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[2.70125rem] rounded-[0.03637rem] size-[0.3635rem] top-[6.72875rem]" data-node-id="375:1295" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[4.3375rem] rounded-[0.03637rem] size-[0.3635rem] top-[5.05688rem]" data-node-id="375:1296" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[4.3375rem] rounded-[0.03637rem] size-[0.3635rem] top-[6.72875rem]" data-node-id="375:1297" />
                   </div>
                   <div className="absolute contents left-[1.68375rem] top-[4.075rem]" data-node-id="375:1298">
-                    <div className="absolute backdrop-blur-[0.56344rem] border border-[var(--color-blue-600)] border-solid h-[13.08569rem] left-[1.82938rem] top-[4.22063rem] w-[20.64625rem]" data-node-id="375:1299" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[22.2575rem] rounded-[0.03637rem] size-[0.3635rem] top-[4.075rem]" data-node-id="375:1300" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[1.68375rem] rounded-[0.03637rem] size-[0.3635rem] top-[4.07562rem]" data-node-id="375:1301" />
-                    <div className="absolute bg-white border border-[var(--color-blue-600)] border-solid left-[22.2575rem] rounded-[0.03637rem] size-[0.3635rem] top-[17.08813rem]" data-node-id="375:1302" />
-                    <div className="absolute bg-white border-[var(--color-blue-600)] border-[0.03637rem] border-solid left-[1.68375rem] rounded-[0.03637rem] size-[0.3635rem] top-[17.08813rem]" data-node-id="375:1303" />
+                    <div className="absolute backdrop-blur-[0.56344rem] border border-[var(--dd-blue-600)] border-solid h-[13.08569rem] left-[1.82938rem] top-[4.22063rem] w-[20.64625rem]" data-node-id="375:1299" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[22.2575rem] rounded-[0.03637rem] size-[0.3635rem] top-[4.075rem]" data-node-id="375:1300" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[1.68375rem] rounded-[0.03637rem] size-[0.3635rem] top-[4.07562rem]" data-node-id="375:1301" />
+                    <div className="absolute bg-white border border-[var(--dd-blue-600)] border-solid left-[22.2575rem] rounded-[0.03637rem] size-[0.3635rem] top-[17.08813rem]" data-node-id="375:1302" />
+                    <div className="absolute bg-white border-[var(--dd-blue-600)] border-[0.03637rem] border-solid left-[1.68375rem] rounded-[0.03637rem] size-[0.3635rem] top-[17.08813rem]" data-node-id="375:1303" />
                   </div>
                 </div>
-                <div className="-translate-x-1/2 absolute bg-white content-stretch drop-shadow-[0rem_2.25363rem_1.54481rem_var(--color-border-subtle-strong)] flex flex-col gap-[0.43619rem] h-[6.25rem] items-start left-[calc(50%-5.69125rem)] p-[0.58156rem] rounded-[0.43619rem] top-[13.26313rem] w-[5.875rem]" data-node-id="375:1304" data-name="Component 2">
+                <div className="-translate-x-1/2 absolute bg-white content-stretch drop-shadow-[0rem_2.25363rem_1.54481rem_var(--dd-border-subtle-strong)] flex flex-col gap-[0.43619rem] h-[6.25rem] items-start left-[calc(50%-5.69125rem)] p-[0.58156rem] rounded-[0.43619rem] top-[13.26313rem] w-[5.875rem]" data-node-id="375:1304" data-name="Component 2">
                   <div className="content-stretch flex items-center relative shrink-0" data-node-id="375:1305">
-                    <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-semibold leading-[normal] not-italic relative shrink-0 text-[0.58156rem] text-black whitespace-nowrap" data-node-id="375:1306">
+                    <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-semibold leading-[normal] not-italic relative shrink-0 text-[0.58156rem] text-black whitespace-nowrap" data-node-id="375:1306">
                       Colors
                     </p>
                   </div>
                   <div className="h-[1.67206rem] overflow-clip relative rounded-[0.43619rem] shrink-0 w-[4.689rem]" data-node-id="375:1307">
-                    <div className="absolute bg-[var(--color-blue-600)] h-[1.67206rem] left-0 top-0 w-[4.689rem]" data-node-id="375:1308" />
+                    <div className="absolute bg-[var(--dd-blue-600)] h-[1.67206rem] left-0 top-0 w-[4.689rem]" data-node-id="375:1308" />
                     <div className="absolute flex h-[0.875rem] items-center justify-center left-[4.21625rem] top-[0.36063rem] w-[0.25rem]" data-node-id="375:1309">
                       <div className="-rotate-90 flex-none">
-                        <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-semibold leading-[normal] not-italic relative text-[0.20638rem] text-white whitespace-nowrap">0060FD</p>
+                        <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-semibold leading-[normal] not-italic relative text-[0.20638rem] text-white whitespace-nowrap">0060FD</p>
                       </div>
                     </div>
                   </div>
                   <div className="h-[1.67206rem] overflow-clip relative rounded-[0.43619rem] shrink-0 w-[4.689rem]" data-node-id="375:1310">
-                    <div className="absolute bg-[var(--color-gray-600)] h-[1.67206rem] left-0 top-0 w-[4.689rem]" data-node-id="375:1311" />
+                    <div className="absolute bg-[var(--dd-gray-600)] h-[1.67206rem] left-0 top-0 w-[4.689rem]" data-node-id="375:1311" />
                     <div className="absolute flex h-[0.8125rem] items-center justify-center left-[4.21625rem] top-[calc(50%-0.4125rem)] w-[0.25rem]" data-node-id="375:1312">
                       <div className="-rotate-90 flex-none">
-                        <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-semibold leading-[normal] not-italic relative text-[0.20638rem] text-white whitespace-nowrap">2B2827</p>
+                        <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-semibold leading-[normal] not-italic relative text-[0.20638rem] text-white whitespace-nowrap">2B2827</p>
                       </div>
                     </div>
                   </div>
@@ -126,8 +126,8 @@ export function ServicesBanner() {
                   </div>
                 </div>
                 <div className="absolute contents left-[12.12125rem] top-[2.20063rem]" data-node-id="375:1316">
-                  <div className="absolute bg-[var(--color-gray-820)] border-[var(--color-gray-700)] border-[0.0495rem] border-solid h-[7.82306rem] left-[12.12125rem] rounded-[0.59413rem] top-[2.20063rem] w-[7.625rem]" data-node-id="375:1317" />
-                  <div className="[word-break:break-word] absolute content-stretch flex flex-col font-[family-name:var(--font-inter-sans)] font-medium gap-[0.69319rem] h-[4.35713rem] items-start leading-[1.5] left-[13.70563rem] not-italic text-[0.67506rem] text-white top-[2.79438rem] tracking-[-0.03038rem] w-[2.37663rem] whitespace-nowrap" data-node-id="375:1318">
+                  <div className="absolute bg-[var(--dd-gray-820)] border-[var(--dd-gray-700)] border-[0.0495rem] border-solid h-[7.82306rem] left-[12.12125rem] rounded-[0.59413rem] top-[2.20063rem] w-[7.625rem]" data-node-id="375:1317" />
+                  <div className="[word-break:break-word] absolute content-stretch flex flex-col font-(family-name:--font-inter-sans) font-medium gap-[0.69319rem] h-[4.35713rem] items-start leading-[1.5] left-[13.70563rem] not-italic text-[0.67506rem] text-white top-[2.79438rem] tracking-[-0.03038rem] w-[2.37663rem] whitespace-nowrap" data-node-id="375:1318">
                     <p className="relative shrink-0" data-node-id="375:1319">
                       Dark
                     </p>
@@ -138,8 +138,8 @@ export function ServicesBanner() {
                       Custom
                     </p>
                   </div>
-                  <div className="absolute bg-[var(--color-blue-450)] content-stretch flex h-[1.28731rem] items-center left-[12.12125rem] px-[1.53488rem] py-[0.49513rem] top-[8.19125rem] w-[7.625rem]" data-node-id="375:1322">
-                    <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-medium leading-[1.5] not-italic relative shrink-0 text-[0.67506rem] text-white tracking-[-0.03038rem] whitespace-nowrap" data-node-id="375:1323">
+                  <div className="absolute bg-[var(--dd-blue-450)] content-stretch flex h-[1.28731rem] items-center left-[12.12125rem] px-[1.53488rem] py-[0.49513rem] top-[8.19125rem] w-[7.625rem]" data-node-id="375:1322">
+                    <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-medium leading-[1.5] not-italic relative shrink-0 text-[0.67506rem] text-white tracking-[-0.03038rem] whitespace-nowrap" data-node-id="375:1323">
                       Add new...
                     </p>
                   </div>
@@ -159,12 +159,12 @@ export function ServicesBanner() {
                 <div className="absolute contents h-[2.84244rem] left-[16.55875rem] top-[3.32563rem] w-[4.84563rem]" data-node-id="375:1326">
                   <div className="absolute flex h-[2.84244rem] items-center justify-center left-[16.55875rem] top-[3.32563rem] w-[4.84563rem]" data-node-id="375:1327">
                     <div className="flex-none rotate-[-9.46deg]">
-                      <div className="bg-[var(--color-blue-600)] h-[2.12194rem] relative rounded-[1.38744rem] w-[4.55881rem]" />
+                      <div className="bg-[var(--dd-blue-600)] h-[2.12194rem] relative rounded-[1.38744rem] w-[4.55881rem]" />
                     </div>
                   </div>
                   <div className="absolute flex h-[1.79806rem] items-center justify-center left-[17.37125rem] top-[3.88813rem] w-[3.23656rem]" data-node-id="375:1328">
                     <div className="flex-none rotate-[-9.46deg]">
-                      <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-medium leading-[1.27313rem] not-italic relative text-[0.84875rem] text-white tracking-[-0.00637rem] uppercase whitespace-nowrap">Visual</p>
+                      <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-medium leading-[1.27313rem] not-italic relative text-[0.84875rem] text-white tracking-[-0.00637rem] uppercase whitespace-nowrap">Visual</p>
                     </div>
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export function ServicesBanner() {
               </div>
               <div className="absolute flex h-[30.25081rem] items-center justify-center left-[-2.13875rem] top-[-10.07375rem] w-[31.08519rem]" data-node-id="375:1330">
                 <div className="-rotate-19 flex-none">
-                  <div className="bg-[var(--color-glow-navy)] blur-[1.22188rem] h-[23.45444rem] relative rounded-[2.75rem] w-[24.80031rem]" />
+                  <div className="bg-[var(--dd-glow-navy)] blur-[1.22188rem] h-[23.45444rem] relative rounded-[2.75rem] w-[24.80031rem]" />
                 </div>
               </div>
             </div>
@@ -184,8 +184,8 @@ export function ServicesBanner() {
         </div>
         <div className="absolute flex h-[30.52156rem] items-center justify-center left-[29.6875rem] top-[-0.8125rem] w-[30.25638rem]" data-node-id="375:1331">
           <div className="-rotate-15 flex-none">
-            <div className="bg-white h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--color-shadow-transparent)] w-[24.625rem]">
-              <p className="[word-break:break-word] absolute bottom-[4.43063rem] font-[family-name:var(--font-manrope-sans)] font-semibold leading-[1.2] left-[2rem] text-[2rem] text-black tracking-[-0.0625rem] translate-y-full w-[16.75rem]" data-node-id="375:1332">
+            <div className="bg-white h-[25rem] overflow-clip relative rounded-[1.5rem] shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--dd-shadow-transparent)] w-[24.625rem]">
+              <p className="[word-break:break-word] absolute bottom-[4.43063rem] font-(family-name:--font-manrope-sans) font-semibold leading-[1.2] left-[2rem] text-[2rem] text-black tracking-[-0.0625rem] translate-y-full w-[16.75rem]" data-node-id="375:1332">
                 Сайты и лендинги
               </p>
               <div className="absolute contents left-[0.97625rem] top-[0.6325rem]" data-node-id="375:1333">
@@ -219,24 +219,24 @@ export function ServicesBanner() {
                 <div className="absolute contents h-[2.7885rem] left-[2.03125rem] top-[15.11625rem] w-[5.20862rem]" data-node-id="375:1340">
                   <div className="absolute flex h-[2.7885rem] items-center justify-center left-[2.03125rem] top-[15.11625rem] w-[5.20862rem]" data-node-id="375:1341">
                     <div className="flex-none rotate-[6.45deg]">
-                      <div className="backdrop-blur-[0.53438rem] bg-[var(--color-glass-tint)] border-[0.0375rem] border-[var(--color-border-subtle)] border-solid h-[2.24194rem] relative rounded-[2.5rem] w-[4.98819rem]" />
+                      <div className="backdrop-blur-[0.53438rem] bg-[var(--dd-glass-tint)] border-[0.0375rem] border-[var(--dd-border-subtle)] border-solid h-[2.24194rem] relative rounded-[2.5rem] w-[4.98819rem]" />
                     </div>
                   </div>
                   <div className="absolute flex h-[1.71056rem] items-center justify-center left-[3.05313rem] top-[15.6725rem] w-[3.19769rem]" data-node-id="375:1342">
                     <div className="flex-none rotate-[6.45deg]">
-                      <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-medium leading-[1.34519rem] not-italic relative text-[var(--color-gray-500)] text-[0.89675rem] tracking-[-0.00673rem] whitespace-nowrap">Upload</p>
+                      <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-medium leading-[1.34519rem] not-italic relative text-[var(--dd-gray-500)] text-[0.89675rem] tracking-[-0.00673rem] whitespace-nowrap">Upload</p>
                     </div>
                   </div>
                 </div>
                 <div className="absolute contents h-[3.00319rem] left-[18.59313rem] top-[8.1325rem] w-[5.11969rem]" data-node-id="375:1343">
                   <div className="absolute flex h-[3.00319rem] items-center justify-center left-[18.59313rem] top-[8.1325rem] w-[5.11969rem]" data-node-id="375:1344">
                     <div className="flex-none rotate-[-9.46deg]">
-                      <div className="bg-[var(--color-blue-600)] h-[2.24194rem] relative rounded-[4.17775rem] w-[4.81669rem]" />
+                      <div className="bg-[var(--dd-blue-600)] h-[2.24194rem] relative rounded-[4.17775rem] w-[4.81669rem]" />
                     </div>
                   </div>
                   <div className="absolute flex h-[1.86994rem] items-center justify-center left-[19.46813rem] top-[8.7225rem] w-[3.3085rem]" data-node-id="375:1345">
                     <div className="flex-none rotate-[-9.46deg]">
-                      <p className="[word-break:break-word] font-[family-name:var(--font-inter-sans)] font-medium leading-[1.34519rem] not-italic relative text-[0.89675rem] text-white tracking-[-0.00673rem] whitespace-nowrap">WOOW</p>
+                      <p className="[word-break:break-word] font-(family-name:--font-inter-sans) font-medium leading-[1.34519rem] not-italic relative text-[0.89675rem] text-white tracking-[-0.00673rem] whitespace-nowrap">WOOW</p>
                     </div>
                   </div>
                 </div>
@@ -267,13 +267,13 @@ export function ServicesBanner() {
             </div>
           </div>
         </div>
-        <div className="absolute top-[27.375rem] left-[70.8125rem] flex w-[19.875rem] -translate-x-1/2 -translate-y-full flex-col justify-end font-[family-name:var(--font-inter-sans)] text-[1.5rem] leading-[0] font-normal text-center text-white tracking-[-0.06rem] not-italic [word-break:break-word]">
+        <div className="absolute top-[27.375rem] left-[70.8125rem] flex w-[19.875rem] -translate-x-1/2 -translate-y-full flex-col justify-end font-(family-name:--font-inter-sans) text-[1.5rem] leading-[0] font-normal text-center text-white tracking-[-0.06rem] not-italic [word-break:break-word]">
           <p>
-            <span className="leading-[1.1] text-[var(--color-overlay-on-dark-strong)]">Продумываем структуру, тексты и интерфейс так, </span>
+            <span className="leading-[1.1] text-[var(--dd-overlay-on-dark-strong)]">Продумываем структуру, тексты и интерфейс так, </span>
             <span className="leading-[1.1]">чтобы сайтом было удобно пользоваться</span>
           </p>
         </div>
-        <div className="absolute top-[27.5rem] left-[14.625rem] flex w-[24.375rem] -translate-x-1/2 -translate-y-full flex-col justify-end font-[family-name:var(--font-inter-sans)] text-[2.25rem] leading-[0] font-medium text-center text-white tracking-[-0.09rem] not-italic [word-break:break-word]">
+        <div className="absolute top-[27.5rem] left-[14.625rem] flex w-[24.375rem] -translate-x-1/2 -translate-y-full flex-col justify-end font-(family-name:--font-inter-sans) text-[2.25rem] leading-[0] font-medium text-center text-white tracking-[-0.09rem] not-italic [word-break:break-word]">
           <p className="leading-none">Проектируем и разрабатываем сайты и лендинги</p>
         </div>
 

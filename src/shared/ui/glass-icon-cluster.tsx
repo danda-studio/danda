@@ -8,13 +8,13 @@ export interface GlassIconClusterProps {
   className?: string;
 }
 
-const iconWrapperClassName = "relative flex size-[2.5rem] shrink-0 items-center justify-center overflow-clip rounded-[0.75rem] bg-white";
+const iconWrapperClassName = "relative flex size-10 shrink-0 items-center justify-center overflow-clip rounded-[0.75rem] bg-white";
 
 export function GlassIconCluster({ variant, className }: GlassIconClusterProps) {
   return (
     <div
       className={cn(
-        "flex items-center justify-center gap-[0.25rem] rounded-[1rem] border-[0.0375rem] border-solid border-[var(--color-border-subtle)] bg-[var(--color-glass-tint)] p-[0.25rem] backdrop-blur-[0.53438rem]",
+        "flex items-center justify-center gap-1 rounded-[1rem] border-[0.0375rem] border-solid border-[var(--dd-border-subtle)] bg-[var(--dd-glass-tint)] p-1 backdrop-blur-[0.53438rem]",
         className,
       )}
     >
@@ -22,26 +22,26 @@ export function GlassIconCluster({ variant, className }: GlassIconClusterProps) 
         ? (
             <>
               <div className={iconWrapperClassName}>
-                <VuesaxBoldFolder className="size-[1rem]" />
+                <VuesaxBoldFolder className="size-4" />
               </div>
               <div className={iconWrapperClassName}>
-                <VuesaxBoldCheck className="size-[1rem]" />
+                <VuesaxBoldCheck className="size-4" />
               </div>
             </>
           )
         : (
             <>
               <div className={iconWrapperClassName}>
-                <VuesaxBoldDocumentCode className="size-[1rem]" />
+                <VuesaxBoldDocumentCode className="size-4" />
               </div>
               <div className={iconWrapperClassName}>
-                <VuesaxBoldPath className="size-[1rem]" />
+                <VuesaxBoldPath className="size-4" />
               </div>
               <div className={cn(iconWrapperClassName, "bg-brand")}>
-                <VuesaxBoldProfile2User className="size-[1rem]" />
+                <VuesaxBoldProfile2User className="size-4" />
               </div>
               <div className={iconWrapperClassName}>
-                <VuesaxBoldLampOn className="size-[1rem]" />
+                <VuesaxBoldLampOn className="size-4" />
               </div>
             </>
           )}

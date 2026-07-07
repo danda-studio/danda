@@ -6,17 +6,17 @@ export function ProjectsSection() {
 
   return (
     <>
-      <p className="absolute top-[62.25rem] left-[1.5rem] font-[family-name:var(--font-manrope-sans)] text-[3.5rem] leading-none font-semibold tracking-[-0.105rem] whitespace-nowrap text-black [word-break:break-word]">
+      <p className="absolute top-[62.25rem] left-[1.5rem] font-(family-name:--font-manrope-sans) text-[3.5rem] leading-none font-semibold tracking-[-0.105rem] whitespace-nowrap text-black [word-break:break-word]">
         Наши проекты
       </p>
-      <p className="absolute top-[64.25rem] left-[82.625rem] -translate-x-1/2 text-center font-[family-name:var(--font-manrope-sans)] text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] whitespace-nowrap text-[var(--color-gray-300)]">
+      <p className="absolute top-[64.25rem] left-[82.625rem] -translate-x-1/2 text-center font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] whitespace-nowrap text-(--dd-gray-300)">
         От задачи к решению
       </p>
 
       {/* Подложка №1 — тот же проект Selix в уменьшенном масштабе, виден только тонкой полоской сверху карточки. */}
       <div className="absolute top-[69.25rem] left-[calc(50%+0.09563rem)] h-[39.6875rem] w-[72.69081rem] -translate-x-1/2 overflow-clip rounded-[1.67106rem]">
         <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[1.67106rem]">
-          <div className="absolute inset-0 rounded-[1.67106rem] bg-[var(--color-gray-100)]" />
+          <div className="absolute inset-0 rounded-[1.67106rem] bg-(--dd-gray-100)" />
           <div className="absolute inset-0 overflow-hidden rounded-[1.67106rem]">
             <img alt="" className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full max-w-none" src="/landing/desktop-6/frame2136141693.jpg" />
           </div>
@@ -30,10 +30,10 @@ export function ProjectsSection() {
         </div>
         <div className="absolute top-[27.25875rem] left-[1.88rem] flex w-[22.14144rem] flex-col items-start gap-[1.25331rem]">
           <div className="flex w-[17.6505rem] flex-col items-start gap-[1.04444rem] text-white [word-break:break-word]">
-            <p className="font-[family-name:var(--font-manrope-sans)] text-[2.08881rem] leading-none font-semibold tracking-[-0.06266rem] whitespace-nowrap">
+            <p className="font-(family-name:--font-manrope-sans) text-[2.08881rem] leading-none font-semibold tracking-[-0.06266rem] whitespace-nowrap">
               {selix.name}
             </p>
-            <p className="h-[3.9165rem] font-[family-name:var(--font-manrope-sans)] text-[1.04444rem] leading-[1.2] font-medium opacity-60">
+            <p className="h-[3.9165rem] font-(family-name:--font-manrope-sans) text-[1.04444rem] leading-[1.2] font-medium opacity-60">
               {selix.description}
             </p>
           </div>
@@ -57,7 +57,7 @@ export function ProjectsSection() {
       {/* Подложка №2 — превью следующего проекта (dr.smile), тоже видна только полоской сверху. */}
       <div className="absolute top-[70.25rem] left-[calc(50%+0.03125rem)] h-[44.3265rem] w-[81.1875rem] -translate-x-1/2 overflow-clip rounded-[1.86638rem]">
         <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[1.86638rem]">
-          <div className="absolute inset-0 rounded-[1.86638rem] bg-gradient-to-b from-[var(--color-blue-200)] to-[var(--color-blue-300)] to-[62.566%]" />
+          <div className="absolute inset-0 rounded-[1.86638rem] bg-gradient-to-b from-(--dd-blue-200) to-(--dd-blue-300) to-[62.566%]" />
           <div className="absolute inset-0 overflow-hidden rounded-[1.86638rem]">
             <img alt="" className="absolute top-[-5.84%] left-[3.19%] h-[94.71%] w-[93.65%] max-w-none" src="/landing/desktop-6/frame2136141697.png" />
           </div>
@@ -72,10 +72,10 @@ export function ProjectsSection() {
         </div>
         <div className="absolute top-[30.44563rem] left-[2.09938rem] flex w-[24.7295rem] flex-col items-start gap-[1.39981rem]">
           <div className="flex w-[19.71363rem] flex-col items-start gap-[1.1665rem] text-white [word-break:break-word]">
-            <p className="font-[family-name:var(--font-manrope-sans)] text-[2.333rem] leading-none font-semibold tracking-[-0.06999rem] whitespace-nowrap">
+            <p className="font-(family-name:--font-manrope-sans) text-[2.333rem] leading-none font-semibold tracking-[-0.06999rem] whitespace-nowrap">
               {drSmile.name}
             </p>
-            <p className="h-[4.37431rem] font-[family-name:var(--font-manrope-sans)] text-[1.1665rem] leading-[1.2] font-medium opacity-60">
+            <p className="h-[4.37431rem] font-(family-name:--font-manrope-sans) text-[1.1665rem] leading-[1.2] font-medium opacity-60">
               {drSmile.description}
             </p>
           </div>
@@ -99,7 +99,7 @@ export function ProjectsSection() {
       {/* Основная видимая карточка — тот же Selix, в полный размер, поверх подложек. */}
       <div className="absolute top-[71.25rem] left-1/2 h-[47.5rem] w-[87rem] -translate-x-1/2 overflow-clip rounded-[2rem]">
         <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[2rem]">
-          <div className="absolute inset-0 rounded-[2rem] bg-[var(--color-gray-100)]" />
+          <div className="absolute inset-0 rounded-[2rem] bg-(--dd-gray-100)" />
           <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
             <img alt="" className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full max-w-none" src="/landing/desktop-6/frame2136141693.jpg" />
           </div>
@@ -113,10 +113,10 @@ export function ProjectsSection() {
         </div>
         <div className="absolute top-[32.625rem] left-[2.25rem] flex w-[26.5rem] flex-col items-start gap-[1.5rem]">
           <div className="flex w-[21.125rem] flex-col items-start gap-[1.25rem] text-white [word-break:break-word]">
-            <p className="font-[family-name:var(--font-manrope-sans)] text-[2.5rem] leading-none font-semibold tracking-[-0.075rem] whitespace-nowrap">
+            <p className="font-(family-name:--font-manrope-sans) text-[2.5rem] leading-none font-semibold tracking-[-0.075rem] whitespace-nowrap">
               {selix.name}
             </p>
-            <p className="h-[4.6875rem] font-[family-name:var(--font-manrope-sans)] text-[1.25rem] leading-[1.2] font-medium opacity-76">
+            <p className="h-[4.6875rem] font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium opacity-76">
               {selix.description}
             </p>
           </div>

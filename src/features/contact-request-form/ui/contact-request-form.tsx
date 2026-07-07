@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/shared/ui/button";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
@@ -19,8 +20,8 @@ function SelectablePill({ label, selected, onSelect }: { label: string; selected
     <button
       type="button"
       onClick={onSelect}
-      className={`flex h-10 shrink-0 cursor-pointer items-center justify-center overflow-clip rounded-[2.5rem] px-[1.25rem] font-[family-name:var(--font-manrope-sans)] text-[1rem] font-medium tracking-[-0.0625rem] ${
-        selected ? "bg-black text-white" : "bg-(--color-gray-150) text-black"
+      className={`flex h-10 shrink-0 cursor-pointer items-center justify-center overflow-clip rounded-[2.5rem] px-5 font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.0625rem] ${
+        selected ? "bg-black text-white" : "bg-(--dd-gray-150) text-black"
       }`}
     >
       {label}
@@ -83,8 +84,10 @@ export function ContactRequestForm() {
             />
           )}
         </form.Field>
-        <div className="flex h-8 items-center gap-1.5 rounded-[1.875rem] bg-brand px-[0.75rem] py-1.75 text-white">
-          <img alt="" src="/landing/desktop-6/boxicons1.svg" className="size-4" />
+        <div className="flex h-8 items-center gap-1.5 rounded-[1.875rem] bg-brand px-3 py-1.75 text-white">
+          <span className="relative size-4 shrink-0">
+            <Image alt="" fill src="/landing/desktop-6/boxicons1.svg" />
+          </span>
           <span className="font-(family-name:--font-manrope-sans) text-[0.875rem] font-medium leading-[1.3]">Прикрепить файл</span>
         </div>
       </div>
@@ -140,7 +143,7 @@ export function ContactRequestForm() {
       <Button
         type="submit"
         variant="primary"
-        className="w-full justify-between"
+        className="w-full"
         leadingIcon={<BoxiconsSend className="relative size-7 -rotate-90" />}
       >
         {submitted ? "Отправлено" : "Бесплатный аудит"}
