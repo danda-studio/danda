@@ -1,4 +1,5 @@
 import { ProjectCounter, PROJECTS } from "@/entities/project";
+import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Tag } from "@/shared/ui/tag";
 
 export function ProjectsSection() {
@@ -8,7 +9,7 @@ export function ProjectsSection() {
     <section className="relative -mt-[17.875rem] px-6 py-16">
       <div className="mx-auto flex max-w-[87rem] items-baseline justify-between">
         <h2 className="font-(family-name:--font-manrope-sans) text-[3.5rem] leading-none font-semibold tracking-[-0.105rem] whitespace-nowrap text-black [word-break:break-word]">
-          Наши проекты
+          <BlurredStaggerText text="Наши проекты" />
         </h2>
         <p className="text-center font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] whitespace-nowrap text-(--dd-gray-300)">
           От задачи к решению

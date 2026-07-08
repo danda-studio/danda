@@ -1,3 +1,4 @@
+import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Button } from "@/shared/ui/button";
 import { GlassIconCluster } from "@/shared/ui/glass-icon-cluster";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
@@ -19,7 +20,7 @@ export function Hero() {
           Студия разработки полного цикла
         </p>
         <h1 className="font-(family-name:--font-manrope-sans) text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] text-black [word-break:break-word]">
-          Мы берем на себя сложность.От сайта до сложного сервиса или приложения
+          <BlurredStaggerText text="Мы берем на себя сложность.От сайта до сложного сервиса или приложения" />
         </h1>
 
         <GlassIconCluster variant="pair" className="absolute top-[14.875rem] left-[calc(50%-9.9375rem)] -translate-x-1/2" />

@@ -1,3 +1,4 @@
+import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Button } from "@/shared/ui/button";
 import { GlassIconCluster } from "@/shared/ui/glass-icon-cluster";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
@@ -58,7 +59,7 @@ export function ProcessSection() {
           Как мы работаем
         </p>
         <h2 className="font-(family-name:--font-manrope-sans) text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] text-black [word-break:break-word]">
-          Прозрачный процесс, фиксированные этапы и предсказуемый результат
+          <BlurredStaggerText text="Прозрачный процесс, фиксированные этапы и предсказуемый результат" />
         </h2>
 
         <GlassIconCluster variant="pair" className="absolute top-[6.1875rem] left-[calc(50%-11.875rem)] -translate-x-1/2" />

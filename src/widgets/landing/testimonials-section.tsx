@@ -1,4 +1,5 @@
 import { TestimonialCard, TESTIMONIALS } from "@/entities/testimonial";
+import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 
 export function TestimonialsSection() {
   return (
@@ -8,7 +9,7 @@ export function TestimonialsSection() {
 
         <div className="absolute top-[5rem] left-1/2 h-[31.25rem] w-[89.875rem] -translate-x-1/2 overflow-clip">
           <p className="absolute top-0 left-[44.9375rem] -translate-x-1/2 text-center font-(family-name:--font-manrope-sans) text-[4.5rem] leading-none font-semibold tracking-[-0.135rem] whitespace-nowrap text-white [word-break:break-word]">
-            Отзывы наших клиентов
+            <BlurredStaggerText text="Отзывы наших клиентов" />
           </p>
 
           <div className="absolute top-[12rem] left-[1.4375rem] h-[23.5625rem] w-[86.9375rem]">
