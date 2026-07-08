@@ -5,17 +5,31 @@ import type { ReactNode } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
+import { cn } from "@/shared/lib/cn";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Tag } from "@/shared/ui/tag";
+
+const PEEK_STEP = 16; // px the not-yet-current cards peek out, per step behind
+const PEEK_SCALE_STEP = 0.045; // the not-yet-current cards shrink slightly, per step behind
+const EXIT_DISTANCE = 900; // px an already-current card travels up when it's removed
+
+function useCardMotion(step: MotionValue<number>, index: number) {
+  const y = useTransform(step, (v) => {
+    const distance = v - index;
+    return distance <= 0 ? PEEK_STEP * distance : -EXIT_DISTANCE * Math.min(distance, 1);
+  });
+  const scale = useTransform(step, (v) => {
+    const distance = v - index;
+    return distance <= 0 ? 1 + PEEK_SCALE_STEP * distance : 1;
+  });
+  return { y, scale };
+}
 
 function FoodDeliveryBackground() {
   return (
     <>
       <img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/food-delivery-bg.png" />
       <img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/food-delivery-bg2.png" />
-      <div className="absolute top-[44.875rem] left-[77rem] h-[0.375rem] w-[7.75rem]">
-        <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/food-delivery-slide.svg" />
-      </div>
     </>
   );
 }
@@ -50,10 +64,26 @@ function SelixBackground() {
       <div className="absolute inset-0 overflow-hidden">
         <img alt="" className="absolute top-[-13.88%] left-0 h-[137.37%] w-full max-w-none" src="/landing/desktop-6/frame2136141695.jpg" />
       </div>
-      <div className="absolute top-[44.875rem] left-[73rem] h-[0.375rem] w-[11.75rem]">
-        <img alt="" className="absolute block inset-0 size-full max-w-none" src="/landing/desktop-6/frame2147221819.svg" />
-      </div>
     </>
+  );
+}
+
+function SlideDot({ step, index }: { step: MotionValue<number>; index: number }) {
+  const fillWidth = useTransform(step, v => `${Math.min(Math.max(v - index + 1, 0), 1) * 100}%`);
+  return (
+    <div className="h-[0.375rem] w-[2.4375rem] overflow-hidden rounded-full bg-white/24">
+      <motion.div className="h-full rounded-full bg-white" style={{ width: fillWidth }} />
+    </div>
+  );
+}
+
+function SlideDots({ step, total }: { step: MotionValue<number>; total: number }) {
+  return (
+    <div className="pointer-events-none absolute right-[2.25rem] bottom-[2.625rem] flex items-center gap-[0.375rem]">
+      {Array.from({ length: total }).map((_, i) => (
+        <SlideDot key={i} step={step} index={i} />
+      ))}
+    </div>
   );
 }
 
@@ -65,11 +95,14 @@ interface StackCardProps {
   current: string;
   y: MotionValue<number> | number;
   scale: MotionValue<number> | number;
+  zClassName: string;
+  step: MotionValue<number>;
+  totalProjects: number;
 }
 
-function StackCard({ background, name, description, tags, current, y, scale }: StackCardProps) {
+function StackCard({ background, name, description, tags, current, y, scale, zClassName, step, totalProjects }: StackCardProps) {
   return (
-    <motion.div className="absolute inset-0 origin-top overflow-clip rounded-[2rem]" style={{ y, scale }}>
+    <motion.div className={cn("absolute inset-0 origin-top overflow-clip rounded-[2rem]", zClassName)} style={{ y, scale }}>
       <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[2rem]">
         {background}
       </div>
@@ -95,6 +128,7 @@ function StackCard({ background, name, description, tags, current, y, scale }: S
         numberClassName="text-[2.25rem] tracking-[-0.0675rem]"
         totalClassName="text-[1.25rem] tracking-[-0.0375rem]"
       />
+      <SlideDots step={step} total={totalProjects} />
     </motion.div>
   );
 }
@@ -103,11 +137,11 @@ export function ProjectsSection() {
   const [foodDelivery, drSmile, selix] = PROJECTS;
   const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
+  const step = useTransform(scrollYProgress, [0, 1], [0, PROJECTS.length - 1]);
 
-  const drSmileY = useTransform(scrollYProgress, [0, 0.5, 1], [-16, 0, 0]);
-  const drSmileScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.933189, 1, 1]);
-  const selixY = useTransform(scrollYProgress, [0, 0.5, 1], [-32, -16, 0]);
-  const selixScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.835526, 0.933189, 1]);
+  const card0 = useCardMotion(step, 0);
+  const card1 = useCardMotion(step, 1);
+  const card2 = useCardMotion(step, 2);
 
   return (
     <section className="relative -mt-[17.875rem] px-6 py-16">
@@ -120,11 +154,11 @@ export function ProjectsSection() {
         </p>
       </div>
 
-      <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[142.5rem] w-[87rem]">
+      <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[450vh] w-[87rem]">
         <div className="sticky top-24 h-[47.5rem] w-full">
-          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={0} scale={1} />
-          <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={drSmileY} scale={drSmileScale} />
-          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={selixY} scale={selixScale} />
+          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card0.y} scale={card0.scale} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={card1.y} scale={card1.scale} zClassName="z-20" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card2.y} scale={card2.scale} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
         </div>
       </div>
     </section>
