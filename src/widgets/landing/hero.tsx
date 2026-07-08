@@ -23,8 +23,8 @@ export function Hero() {
           <BlurredStaggerText text="Мы берем на себя сложность.От сайта до сложного сервиса или приложения" />
         </h1>
 
-        <GlassIconCluster variant="pair" className="absolute top-[14.875rem] left-[calc(50%-9.9375rem)] -translate-x-1/2" />
-        <GlassIconCluster variant="quad" className="absolute top-[24rem] left-[calc(50%+14rem)] -translate-x-1/2" />
+        <GlassIconCluster variant="pair" floatDelay={0} className="absolute top-[14.875rem] left-[calc(50%-9.9375rem)] -translate-x-1/2" />
+        <GlassIconCluster variant="quad" floatDelay={0.8} className="absolute top-[24rem] left-[calc(50%+14rem)] -translate-x-1/2" />
       </div>
 
       <div className="relative mx-auto mt-[-8.3125rem] w-full">

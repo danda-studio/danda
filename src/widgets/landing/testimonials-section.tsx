@@ -1,7 +1,17 @@
+"use client";
+
+import { motion } from "motion/react";
+import { useState } from "react";
 import { TestimonialCard, TESTIMONIALS } from "@/entities/testimonial";
+import { cn } from "@/shared/lib/cn";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 
+const DEFAULT_INDEX = 2;
+const CARD_STEP = 382; // ширина карточки (w-93 = 372px) + gap-[0.625rem] (10px)
+
 export function TestimonialsSection() {
+  const [activeIndex, setActiveIndex] = useState(DEFAULT_INDEX);
+
   return (
     <section className="relative mt-[0.75rem] px-6">
       <div className="relative mx-auto h-[41.25rem] w-[87rem]">
@@ -15,21 +25,36 @@ export function TestimonialsSection() {
           <div className="absolute top-[12rem] left-[1.4375rem] h-[23.5625rem] w-[86.9375rem]">
             <div className="absolute top-[-0.00063rem] left-0 flex w-[86.9375rem] items-start justify-center">
               <div className="flex items-center gap-[0.625rem]">
-                {TESTIMONIALS.map(testimonial => (
-                  <div key={testimonial.id} className="relative size-[3rem] shrink-0 overflow-hidden rounded-full">
+                {TESTIMONIALS.map((testimonial, index) => (
+                  <button
+                    key={testimonial.id}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className={cn(
+                      "relative size-[3rem] shrink-0 cursor-pointer overflow-hidden rounded-full transition-[box-shadow] duration-300",
+                      index === activeIndex ? "ring-2 ring-white ring-offset-2 ring-offset-black" : "opacity-60 hover:opacity-100",
+                    )}
+                  >
                     <img alt="" src={testimonial.avatar} className="size-full object-cover" />
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
 
             <div className="absolute top-[5.25rem] left-0 flex w-[86.9375rem] items-start justify-center gap-[0.625rem] overflow-clip">
-              {TESTIMONIALS.map(testimonial => (
-                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-              ))}
+              <motion.div
+                className="flex items-start gap-[0.625rem]"
+                animate={{ x: (DEFAULT_INDEX - activeIndex) * CARD_STEP }}
+                transition={{ type: "spring", stiffness: 300, damping: 32 }}
+              >
+                {TESTIMONIALS.map(testimonial => (
+                  <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+                ))}
+              </motion.div>
             </div>
           </div>
 
+          <div className="absolute top-[calc(50%+8.625rem)] left-6 h-[14rem] w-[21.125rem] -translate-y-1/2 bg-gradient-to-l from-(--dd-fade-black-transparent) to-[43.023%] to-black" />
           <div className="absolute top-[calc(50%+8.625rem)] right-6 h-[14rem] w-[21.125rem] -translate-y-1/2 bg-gradient-to-r from-(--dd-fade-black-transparent) to-[43.023%] to-black" />
         </div>
       </div>

@@ -1,9 +1,113 @@
+"use client";
+
+import type { MotionValue } from "motion/react";
+import type { ReactNode } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Tag } from "@/shared/ui/tag";
 
+function FoodDeliveryBackground() {
+  return (
+    <>
+      <img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/food-delivery-bg.png" />
+      <img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/food-delivery-bg2.png" />
+      <div className="absolute top-[44.875rem] left-[77rem] h-[0.375rem] w-[7.75rem]">
+        <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/food-delivery-slide.svg" />
+      </div>
+    </>
+  );
+}
+
+function DrSmileBackground() {
+  return (
+    <>
+      <div className="absolute inset-0 bg-gradient-to-b from-(--dd-blue-200) to-(--dd-blue-300) to-[62.566%]" />
+      <div className="absolute inset-0 overflow-hidden">
+        <img alt="" className="absolute top-[-5.84%] left-[3.19%] h-[94.71%] w-[93.65%] max-w-none" src="/landing/desktop-6/frame2136141697.png" />
+      </div>
+      <div className="absolute inset-0 overflow-hidden">
+        <img alt="" className="absolute top-[-2.83%] left-0 h-[116.04%] w-full max-w-none" src="/landing/desktop-6/frame2136141698.png" />
+      </div>
+      <div className="absolute top-[30rem] left-[-12.8125rem] h-[26.625rem] w-[45rem]">
+        <div className="absolute inset-[-56.64%_-33.51%]">
+          <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/ellipse11731.svg" />
+        </div>
+      </div>
+    </>
+  );
+}
+
+function SelixBackground() {
+  return (
+    <>
+      <div className="absolute inset-0 bg-(--dd-gray-100)" />
+      <div className="absolute inset-0 overflow-hidden">
+        <img alt="" className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full max-w-none" src="/landing/desktop-6/frame2136141693.jpg" />
+      </div>
+      <img alt="" className="absolute size-full max-w-none object-cover" src="/landing/desktop-6/frame2136141694.png" />
+      <div className="absolute inset-0 overflow-hidden">
+        <img alt="" className="absolute top-[-13.88%] left-0 h-[137.37%] w-full max-w-none" src="/landing/desktop-6/frame2136141695.jpg" />
+      </div>
+      <div className="absolute top-[44.875rem] left-[73rem] h-[0.375rem] w-[11.75rem]">
+        <img alt="" className="absolute block inset-0 size-full max-w-none" src="/landing/desktop-6/frame2147221819.svg" />
+      </div>
+    </>
+  );
+}
+
+interface StackCardProps {
+  background: ReactNode;
+  name: string;
+  description: string;
+  tags: string[];
+  current: string;
+  y: MotionValue<number> | number;
+  scale: MotionValue<number> | number;
+}
+
+function StackCard({ background, name, description, tags, current, y, scale }: StackCardProps) {
+  return (
+    <motion.div className="absolute inset-0 origin-top overflow-clip rounded-[2rem]" style={{ y, scale }}>
+      <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[2rem]">
+        {background}
+      </div>
+      <div className="absolute top-[32.625rem] left-[2.25rem] flex w-[26.5rem] flex-col items-start gap-[1.5rem]">
+        <div className="flex w-[21.125rem] flex-col items-start gap-[1.25rem] text-white [word-break:break-word]">
+          <p className="font-(family-name:--font-manrope-sans) text-[2.5rem] leading-none font-semibold tracking-[-0.075rem] whitespace-nowrap">
+            {name}
+          </p>
+          <p className="h-[4.6875rem] font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium opacity-76">
+            {description}
+          </p>
+        </div>
+        <div className="flex items-center gap-[0.5rem]">
+          {tags.map(tag => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
+        </div>
+      </div>
+      <ProjectCounter
+        current={current}
+        total="03"
+        className="absolute top-[2.25rem] left-[80.25rem] gap-[0.25rem]"
+        numberClassName="text-[2.25rem] tracking-[-0.0675rem]"
+        totalClassName="text-[1.25rem] tracking-[-0.0375rem]"
+      />
+    </motion.div>
+  );
+}
+
 export function ProjectsSection() {
-  const [selix, drSmile] = PROJECTS;
+  const [foodDelivery, drSmile, selix] = PROJECTS;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
+
+  const drSmileY = useTransform(scrollYProgress, [0, 0.5, 1], [-16, 0, 0]);
+  const drSmileScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.933189, 1, 1]);
+  const selixY = useTransform(scrollYProgress, [0, 0.5, 1], [-32, -16, 0]);
+  const selixScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.835526, 0.933189, 1]);
 
   return (
     <section className="relative -mt-[17.875rem] px-6 py-16">
@@ -16,127 +120,11 @@ export function ProjectsSection() {
         </p>
       </div>
 
-      <div className="relative mx-auto mt-[5.5rem] h-[47.5rem] w-[87rem]">
-        {/* Подложка №1 — тот же проект Selix в уменьшенном масштабе, виден только тонкой полоской сверху карточки. */}
-        <div className="absolute -top-[2rem] left-[calc(50%+0.09563rem)] h-[39.6875rem] w-[72.69081rem] -translate-x-1/2 overflow-clip rounded-[1.67106rem]">
-          <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[1.67106rem]">
-            <div className="absolute inset-0 rounded-[1.67106rem] bg-(--dd-gray-100)" />
-            <div className="absolute inset-0 overflow-hidden rounded-[1.67106rem]">
-              <img alt="" className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full max-w-none" src="/landing/desktop-6/frame2136141693.jpg" />
-            </div>
-            <img alt="" className="absolute size-full max-w-none rounded-[1.67106rem] object-cover" src="/landing/desktop-6/frame2136141694.png" />
-            <div className="absolute inset-0 overflow-hidden rounded-[1.67106rem]">
-              <img alt="" className="absolute top-[-13.88%] left-0 h-[137.37%] w-full max-w-none" src="/landing/desktop-6/frame2136141695.jpg" />
-            </div>
-            <div className="absolute inset-0 overflow-hidden rounded-[1.67106rem]">
-              <img alt="" className="absolute top-[-4.95%] left-0 h-[109.89%] w-full max-w-none" src="/landing/desktop-6/frame2136141696.png" />
-            </div>
-          </div>
-          <div className="absolute top-[27.25875rem] left-[1.88rem] flex w-[22.14144rem] flex-col items-start gap-[1.25331rem]">
-            <div className="flex w-[17.6505rem] flex-col items-start gap-[1.04444rem] text-white [word-break:break-word]">
-              <p className="font-(family-name:--font-manrope-sans) text-[2.08881rem] leading-none font-semibold tracking-[-0.06266rem] whitespace-nowrap">
-                {selix.name}
-              </p>
-              <p className="h-[3.9165rem] font-(family-name:--font-manrope-sans) text-[1.04444rem] leading-[1.2] font-medium opacity-60">
-                {selix.description}
-              </p>
-            </div>
-            <div className="flex items-center gap-[0.41775rem]">
-              {selix.tags.map(tag => (
-                <Tag key={tag} className="rounded-[0.8355rem] border-[0.03656rem] px-[0.8355rem] py-[0.62663rem] text-[0.8355rem] tracking-[-0.02507rem]">
-                  {tag}
-                </Tag>
-              ))}
-            </div>
-          </div>
-          <ProjectCounter
-            current="01"
-            total="08"
-            className="absolute top-[1.88rem] left-[66.99875rem] gap-[0.20888rem]"
-            numberClassName="text-[1.87994rem] tracking-[-0.0564rem]"
-            totalClassName="text-[1.04444rem] tracking-[-0.03133rem]"
-          />
-        </div>
-
-        {/* Подложка №2 — превью следующего проекта (dr.smile), тоже видна только полоской сверху. */}
-        <div className="absolute -top-[1rem] left-[calc(50%+0.03125rem)] h-[44.3265rem] w-[81.1875rem] -translate-x-1/2 overflow-clip rounded-[1.86638rem]">
-          <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[1.86638rem]">
-            <div className="absolute inset-0 rounded-[1.86638rem] bg-gradient-to-b from-(--dd-blue-200) to-(--dd-blue-300) to-[62.566%]" />
-            <div className="absolute inset-0 overflow-hidden rounded-[1.86638rem]">
-              <img alt="" className="absolute top-[-5.84%] left-[3.19%] h-[94.71%] w-[93.65%] max-w-none" src="/landing/desktop-6/frame2136141697.png" />
-            </div>
-            <div className="absolute inset-0 overflow-hidden rounded-[1.86638rem]">
-              <img alt="" className="absolute top-[-2.83%] left-0 h-[116.04%] w-full max-w-none" src="/landing/desktop-6/frame2136141698.png" />
-            </div>
-          </div>
-          <div className="absolute top-[27.99563rem] left-[-11.95625rem] h-[24.84619rem] w-[41.99356rem]">
-            <div className="absolute inset-[-56.64%_-33.51%]">
-              <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/ellipse11731.svg" />
-            </div>
-          </div>
-          <div className="absolute top-[30.44563rem] left-[2.09938rem] flex w-[24.7295rem] flex-col items-start gap-[1.39981rem]">
-            <div className="flex w-[19.71363rem] flex-col items-start gap-[1.1665rem] text-white [word-break:break-word]">
-              <p className="font-(family-name:--font-manrope-sans) text-[2.333rem] leading-none font-semibold tracking-[-0.06999rem] whitespace-nowrap">
-                {drSmile.name}
-              </p>
-              <p className="h-[4.37431rem] font-(family-name:--font-manrope-sans) text-[1.1665rem] leading-[1.2] font-medium opacity-60">
-                {drSmile.description}
-              </p>
-            </div>
-            <div className="flex items-center gap-[0.46663rem]">
-              {drSmile.tags.map(tag => (
-                <Tag key={tag} className="rounded-[0.93319rem] border-[0.04081rem] px-[0.93319rem] py-[0.69988rem] text-[0.93319rem] tracking-[-0.02799rem]">
-                  {tag}
-                </Tag>
-              ))}
-            </div>
-          </div>
-          <ProjectCounter
-            current="02"
-            total="08"
-            className="absolute top-[2.1rem] left-[74.48rem] gap-[0.23331rem]"
-            numberClassName="text-[2.09969rem] tracking-[-0.06299rem]"
-            totalClassName="text-[1.1665rem] tracking-[-0.03499rem]"
-          />
-        </div>
-
-        {/* Основная видимая карточка — тот же Selix, в полный размер, поверх подложек. */}
-        <div className="absolute inset-0 overflow-clip rounded-[2rem]">
-          <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[2rem]">
-            <div className="absolute inset-0 rounded-[2rem] bg-(--dd-gray-100)" />
-            <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
-              <img alt="" className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full max-w-none" src="/landing/desktop-6/frame2136141693.jpg" />
-            </div>
-            <img alt="" className="absolute size-full max-w-none rounded-[2rem] object-cover" src="/landing/desktop-6/frame2136141694.png" />
-            <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
-              <img alt="" className="absolute top-[-13.88%] left-0 h-[137.37%] w-full max-w-none" src="/landing/desktop-6/frame2136141695.jpg" />
-            </div>
-          </div>
-          <div className="absolute top-[44.875rem] left-[73rem] h-[0.375rem] w-[11.75rem]">
-            <img alt="" className="absolute block inset-0 size-full max-w-none" src="/landing/desktop-6/frame2147221819.svg" />
-          </div>
-          <div className="absolute top-[32.625rem] left-[2.25rem] flex w-[26.5rem] flex-col items-start gap-[1.5rem]">
-            <div className="flex w-[21.125rem] flex-col items-start gap-[1.25rem] text-white [word-break:break-word]">
-              <p className="font-(family-name:--font-manrope-sans) text-[2.5rem] leading-none font-semibold tracking-[-0.075rem] whitespace-nowrap">
-                {selix.name}
-              </p>
-              <p className="h-[4.6875rem] font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium opacity-76">
-                {selix.description}
-              </p>
-            </div>
-            <div className="flex items-center gap-[0.5rem]">
-              {selix.tags.map(tag => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </div>
-          </div>
-          <ProjectCounter
-            current="01"
-            total="05"
-            className="absolute top-[2.25rem] left-[80.25rem] gap-[0.25rem]"
-            numberClassName="text-[2.25rem] tracking-[-0.0675rem]"
-            totalClassName="text-[1.25rem] tracking-[-0.0375rem]"
-          />
+      <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[142.5rem] w-[87rem]">
+        <div className="sticky top-24 h-[47.5rem] w-full">
+          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={0} scale={1} />
+          <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={drSmileY} scale={drSmileScale} />
+          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={selixY} scale={selixScale} />
         </div>
       </div>
     </section>

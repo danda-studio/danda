@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "motion/react";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Button } from "@/shared/ui/button";
 import { GlassIconCluster } from "@/shared/ui/glass-icon-cluster";
@@ -32,9 +35,13 @@ function Divider() {
   );
 }
 
-function FloatingBadge({ label, vector, vectorClassName, className }: { label: string; vector: string; vectorClassName: string; className: string }) {
+function FloatingBadge({ label, vector, vectorClassName, className, floatDelay = 0 }: { label: string; vector: string; vectorClassName: string; className: string; floatDelay?: number }) {
   return (
-    <div className={className}>
+    <motion.div
+      animate={{ y: [0, -8, 0] }}
+      transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: floatDelay }}
+      className={className}
+    >
       <div className="absolute top-[1.67563rem] left-[0.25125rem] flex items-center justify-center rounded-[1.82813rem] bg-brand px-4 py-2 backdrop-blur-[0.82031rem]">
         <p className="font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.03rem] whitespace-nowrap text-white">
           {label}
@@ -47,7 +54,7 @@ function FloatingBadge({ label, vector, vectorClassName, className }: { label: s
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -62,25 +69,27 @@ export function ProcessSection() {
           <BlurredStaggerText text="Прозрачный процесс, фиксированные этапы и предсказуемый результат" />
         </h2>
 
-        <GlassIconCluster variant="pair" className="absolute top-[6.1875rem] left-[calc(50%-11.875rem)] -translate-x-1/2" />
-        <GlassIconCluster variant="quad" className="absolute top-[11rem] left-[calc(50%+17.875rem)] -translate-x-1/2" />
+        <GlassIconCluster variant="pair" floatDelay={1.6} className="absolute top-[6.1875rem] left-[calc(50%-11.875rem)] -translate-x-1/2" />
+        <GlassIconCluster variant="quad" floatDelay={2.4} className="absolute top-[11rem] left-[calc(50%+17.875rem)] -translate-x-1/2" />
 
         <FloatingBadge
           label="Developer"
           vector="/landing/desktop-6/vector1.svg"
           vectorClassName="absolute top-[0.5025rem] left-[5.84688rem] flex h-[1.78844rem] w-[1.86594rem] items-center justify-center rotate-71"
           className="absolute top-[10.0625rem] left-[calc(50%-38.5rem)] h-[3.9375rem] w-[6.75rem]"
+          floatDelay={0.4}
         />
         <FloatingBadge
           label="Designer"
           vector="/landing/desktop-6/vector2.svg"
           vectorClassName="absolute top-[0.42125rem] left-[-0.55125rem] flex h-[1.69663rem] w-[1.59275rem] items-center justify-center -rotate-9"
           className="absolute top-[2.5rem] left-[calc(50%+34.375rem)] h-[3.9375rem] w-[6.75rem]"
+          floatDelay={1.2}
         />
       </div>
 
       <div className="mx-auto mt-[8.75rem] flex max-w-[87rem] items-start gap-[17.5rem]">
-        <p className="w-83 shrink-0 font-(family-name:--font-manrope-sans) font-medium tracking-[-0.0625rem] text-muted [word-break:break-word]">
+        <p className="sticky top-24 w-83 shrink-0 font-(family-name:--font-manrope-sans) font-medium tracking-[-0.0625rem] text-muted [word-break:break-word]">
           <span className="text-xl leading-[1.2]">Вы получаете понятное цифровое решение. </span>
           <span className="text-xl leading-[1.2] text-black">Для бизнеса, который ценит ясность и стабильность</span>
         </p>
