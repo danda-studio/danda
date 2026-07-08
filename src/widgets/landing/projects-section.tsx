@@ -10,7 +10,7 @@ import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Tag } from "@/shared/ui/tag";
 
 const PEEK_STEP = 16; // px the not-yet-current cards peek out, per step behind
-const PEEK_SCALE_STEP = 0.045; // the not-yet-current cards shrink slightly, per step behind
+const PEEK_SCALE_STEP = 0.08; // the not-yet-current cards shrink slightly, per step behind
 const EXIT_DISTANCE = 900; // px an already-current card travels up when it's removed
 
 function useCardMotion(step: MotionValue<number>, index: number) {
@@ -69,7 +69,7 @@ function SelixBackground() {
 }
 
 function SlideDot({ step, index }: { step: MotionValue<number>; index: number }) {
-  const fillWidth = useTransform(step, v => `${Math.min(Math.max(v - index + 1, 0), 1) * 100}%`);
+  const fillWidth = useTransform(step, v => `${Math.min(Math.max(index + 1 - v, 0), 1) * 100}%`);
   return (
     <div className="h-[0.375rem] w-[2.4375rem] overflow-hidden rounded-full bg-white/24">
       <motion.div className="h-full rounded-full bg-white" style={{ width: fillWidth }} />
@@ -80,7 +80,7 @@ function SlideDot({ step, index }: { step: MotionValue<number>; index: number })
 function SlideDots({ step, total }: { step: MotionValue<number>; total: number }) {
   return (
     <div className="pointer-events-none absolute right-[2.25rem] bottom-[2.625rem] flex items-center gap-[0.375rem]">
-      {Array.from({ length: total }).map((_, i) => (
+      {Array.from({ length: total }, (_, i) => total - 1 - i).map(i => (
         <SlideDot key={i} step={step} index={i} />
       ))}
     </div>
@@ -156,9 +156,9 @@ export function ProjectsSection() {
 
       <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[450vh] w-[87rem]">
         <div className="sticky top-24 h-[47.5rem] w-full">
-          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card0.y} scale={card0.scale} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card0.y} scale={card0.scale} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
           <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={card1.y} scale={card1.scale} zClassName="z-20" step={step} totalProjects={PROJECTS.length} />
-          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card2.y} scale={card2.scale} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card2.y} scale={card2.scale} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
         </div>
       </div>
     </section>
