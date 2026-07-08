@@ -10,8 +10,8 @@ import { TestimonialsSection } from "@/widgets/landing/testimonials-section";
 export function LandingView() {
   return (
     <main className="mx-auto w-full max-w-360 overflow-x-clip bg-white">
-      <div className="relative mx-auto h-[419.1875rem] w-[90rem] overflow-clip bg-white">
-        <Header />
+      <Header />
+      <div className="relative mx-auto -mt-23 h-[419.1875rem] w-[90rem] overflow-clip">
         <Hero />
         <ProjectsSection />
         <ProcessSection />
