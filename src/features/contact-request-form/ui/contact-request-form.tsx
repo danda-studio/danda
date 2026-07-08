@@ -52,7 +52,7 @@ export function ContactRequestForm() {
 
   return (
     <form
-      className="absolute top-[316.375rem] left-1/2 flex w-143 -translate-x-1/2 flex-col items-start gap-6"
+      className="mx-auto flex w-143 max-w-full flex-col items-start gap-6"
       onSubmit={(event) => {
         event.preventDefault();
         event.stopPropagation();
