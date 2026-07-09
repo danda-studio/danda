@@ -2,7 +2,7 @@ import { ContactRequestForm } from "@/features/contact-request-form";
 
 export function ContactSectionMobile() {
   return (
-    <section className="relative px-3 py-10">
+    <section id="contact-mobile" className="relative px-3 py-10">
       <div className="mx-auto flex w-[21rem] flex-col items-center gap-5 text-center [word-break:break-word]">
         <h2 className="w-full font-(family-name:--font-manrope-sans) text-[2rem] leading-none font-semibold tracking-[-0.06rem] text-black">
           Обсудим проект

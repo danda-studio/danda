@@ -44,6 +44,8 @@ export function Hero() {
           variant="primary"
           className="absolute top-[24.3125rem] left-6"
           leadingIcon={<BoxiconsSend className="relative size-[1.75rem] -rotate-90" />}
+          render={<a href="#contact" />}
+          nativeButton={false}
         >
           Бесплатный аудит
         </Button>

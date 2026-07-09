@@ -1,9 +1,10 @@
 import { Button } from "@/shared/ui/button";
 import { HamburgerIcon } from "@/shared/ui/icons/boxicons";
+import { NavMenu } from "@/shared/ui/nav-menu";
 
 export function Header() {
   return (
-    <header className="grid grid-cols-[1fr_auto_1fr] items-start px-6 py-6">
+    <header className="relative z-20 grid grid-cols-[1fr_auto_1fr] items-start px-6 py-6">
       <div className="flex w-[9.47919rem] flex-col items-start justify-self-start">
         <div className="flex items-center gap-[0.58331rem]">
           <div className="relative size-7 overflow-clip">
@@ -17,9 +18,18 @@ export function Header() {
         </div>
       </div>
 
-      <Button variant="light" trailingIcon={<HamburgerIcon />} className="justify-self-center">
-        Меню
-      </Button>
+      <div className="justify-self-center">
+        <NavMenu
+          mode="hover"
+          closedClassName="inline-flex h-11 cursor-pointer items-center justify-center whitespace-nowrap rounded-[1rem] px-5 py-4 text-[1rem] font-medium tracking-[-0.025rem] text-black"
+          closedContent={(
+            <span className="flex items-center gap-[0.625rem]">
+              Меню
+              <HamburgerIcon />
+            </span>
+          )}
+        />
+      </div>
 
       <Button variant="primary" className="justify-self-end">
         Написать

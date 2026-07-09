@@ -13,7 +13,7 @@ export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(DEFAULT_INDEX);
 
   return (
-    <section className="relative mt-[0.75rem] px-6">
+    <section id="testimonials" className="relative mt-[0.75rem] px-6">
       <div className="relative mx-auto h-[41.25rem] w-[87rem]">
         <div className="absolute inset-0 rounded-[2rem] bg-black" />
 

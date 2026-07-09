@@ -3,7 +3,7 @@ import { TESTIMONIALS } from "@/entities/testimonial";
 
 export function TestimonialsSectionMobile() {
   return (
-    <section className="relative px-3 py-10">
+    <section id="testimonials-mobile" className="relative px-3 py-10">
       <div className="relative mx-auto min-h-[26rem] w-[21rem] overflow-clip rounded-[1.5rem] bg-black py-8">
         <div className="flex flex-col items-center gap-5 px-6 text-center">
           <p className="w-[18rem] font-(family-name:--font-inter-sans) text-[2rem] leading-none font-medium tracking-[-0.04rem] text-white [word-break:break-word]">

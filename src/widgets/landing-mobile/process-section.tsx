@@ -35,7 +35,7 @@ const STEPS = [
 
 export function ProcessSectionMobile() {
   return (
-    <section className="relative px-3 py-10">
+    <section id="process-mobile" className="relative px-3 py-10">
       <div className="relative mx-auto flex w-[21rem] flex-col items-center gap-3 text-center">
         <p className="font-(family-name:--font-manrope-sans) text-[1rem] font-medium text-(--dd-gray-400)">
           Как мы работаем

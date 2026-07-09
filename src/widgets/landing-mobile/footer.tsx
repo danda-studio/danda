@@ -1,3 +1,10 @@
+const FOOTER_NAV_ITEMS = [
+  { label: "Портфолио", slug: "projects-mobile" },
+  { label: "Этапы работы", slug: "process-mobile" },
+  { label: "Услуги", slug: "services-mobile" },
+  { label: "Отзывы", slug: "testimonials-mobile" },
+];
+
 export function FooterMobile() {
   return (
     <footer className="relative overflow-hidden bg-white px-3 pt-16 pb-8">
@@ -36,7 +43,7 @@ export function FooterMobile() {
         </div>
       </div>
 
-      <div className="mx-auto mt-4 flex w-[21rem] items-center gap-3 rounded-[1rem] bg-brand py-1 pr-5 pl-1">
+      <a href="#contact-mobile" className="mx-auto mt-4 flex w-[21rem] cursor-pointer items-center gap-3 rounded-[1rem] bg-brand py-1 pr-5 pl-1">
         <div className="relative size-10 shrink-0 overflow-clip rounded-[0.75rem] bg-white">
           <div className="absolute top-[0.625rem] left-[0.625rem] flex size-6 items-center justify-center">
             <div className="-rotate-90 flex-none">
@@ -49,15 +56,16 @@ export function FooterMobile() {
         <p className="font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.025rem] whitespace-nowrap text-white">
           Бесплатный аудит
         </p>
-      </div>
+      </a>
 
       <div className="mx-auto mt-12 flex w-[21rem] flex-col items-start gap-4 font-(family-name:--font-manrope-sans) text-[1.25rem] font-medium tracking-[-0.0625rem]">
         <p className="text-(--dd-gray-400)">Навигация</p>
         <div className="flex flex-col items-start gap-4 text-(--dd-gray-820)">
-          <p>Портфолио</p>
-          <p>Этапы работы</p>
-          <p>Услуги</p>
-          <p>Отзывы</p>
+          {FOOTER_NAV_ITEMS.map(item => (
+            <a key={item.slug} href={`#${item.slug}`} className="cursor-pointer">
+              {item.label}
+            </a>
+          ))}
         </div>
       </div>
 

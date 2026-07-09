@@ -3,13 +3,20 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 
+const FOOTER_NAV_ITEMS = [
+  { label: "Портфолио", slug: "projects" },
+  { label: "Этапы работы", slug: "process" },
+  { label: "Услуги", slug: "services" },
+  { label: "Отзывы", slug: "testimonials" },
+];
+
 export function Footer() {
   const danndaRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: danndaRef, offset: ["start end", "end start"] });
   const logoY = useTransform(scrollYProgress, [0, 1], [0, -320]);
 
   return (
-    <footer className="relative mt-[1.875rem] overflow-hidden bg-white">
+    <footer className="relative mt-[1.875rem] overflow-x-clip bg-white">
       <div className="relative mx-auto h-[53.25rem] w-[90rem]">
         <div className="pointer-events-none absolute top-0 left-1/2 h-[55.4375rem] w-[90rem] -translate-x-1/2">
           <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/dots.svg" />
@@ -57,16 +64,18 @@ export function Footer() {
             <p className="relative font-(family-name:--font-inter-sans) text-[2rem] font-semibold whitespace-nowrap text-white not-italic [word-break:break-word]">danda@gmail.com</p>
           </div>
         </div>
-        <div className="absolute flex h-[6.23563rem] items-center justify-center left-[41.9375rem] top-[42.125rem] w-[19.43581rem]">
-          <div className="flex-none rotate-7">
-            <div className="relative h-[3.9375rem] w-[19.09831rem] rounded-[1rem] bg-white" />
+        <a href="#contact" className="contents">
+          <div className="absolute flex h-[6.23563rem] cursor-pointer items-center justify-center left-[41.9375rem] top-[42.125rem] w-[19.43581rem]">
+            <div className="flex-none rotate-7">
+              <div className="relative h-[3.9375rem] w-[19.09831rem] rounded-[1rem] bg-white" />
+            </div>
           </div>
-        </div>
-        <div className="absolute flex h-[4.19075rem] items-center justify-center left-[43.5425rem] top-[43.115rem] w-[16.217rem]">
-          <div className="flex-none rotate-7">
-            <p className="relative font-(family-name:--font-inter-sans) text-[2rem] font-semibold whitespace-nowrap text-(--dd-gray-450) not-italic [word-break:break-word]">Обсудить проект</p>
+          <div className="absolute flex h-[4.19075rem] cursor-pointer items-center justify-center left-[43.5425rem] top-[43.115rem] w-[16.217rem]">
+            <div className="flex-none rotate-7">
+              <p className="relative font-(family-name:--font-inter-sans) text-[2rem] font-semibold whitespace-nowrap text-(--dd-gray-450) not-italic [word-break:break-word]">Обсудить проект</p>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Соцсети + CTA поверх декоративной картинки */}
         <motion.div
@@ -85,12 +94,13 @@ export function Footer() {
           ))}
         </motion.div>
 
-        <motion.div
+        <motion.a
+          href="#contact"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-          className="absolute top-[26rem] left-[49.5625rem] flex items-center justify-center gap-4 rounded-[1.25rem] bg-(--dd-blue-600) py-[0.625rem] pr-6 pl-[0.625rem]"
+          className="absolute top-[26rem] left-[49.5625rem] flex cursor-pointer items-center justify-center gap-4 rounded-[1.25rem] bg-(--dd-blue-600) py-[0.625rem] pr-6 pl-[0.625rem]"
         >
           <div className="relative size-12 shrink-0 overflow-clip rounded-[1rem] bg-white">
             <div className="absolute top-[0.625rem] left-[0.625rem] flex size-7 items-center justify-center">
@@ -104,7 +114,7 @@ export function Footer() {
           <p className="shrink-0 font-(family-name:--font-manrope-sans) text-[1.25rem] font-medium tracking-[-0.025rem] whitespace-nowrap text-white [word-break:break-word]">
             Бесплатный аудит
           </p>
-        </motion.div>
+        </motion.a>
 
         {/* Контент (почта/копирайт + навигация) — накладывается поверх декоративной картинки, как в макете */}
         <div className="absolute top-[20.9375rem] left-6 flex w-[87rem] items-start justify-between">
@@ -124,10 +134,11 @@ export function Footer() {
           <div className="flex flex-col items-start gap-7 font-(family-name:--font-manrope-sans) text-[1.25rem] font-medium tracking-[-0.0625rem]">
             <p className="text-(--dd-gray-400)">Навигация</p>
             <div className="flex flex-col items-start gap-4 text-(--dd-gray-820) whitespace-nowrap">
-              <p>Портфолио</p>
-              <p>Этапы работы</p>
-              <p>Услуги</p>
-              <p>Отзывы</p>
+              {FOOTER_NAV_ITEMS.map(item => (
+                <a key={item.slug} href={`#${item.slug}`} className="cursor-pointer hover:text-black">
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>

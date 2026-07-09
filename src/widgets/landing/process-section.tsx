@@ -60,7 +60,7 @@ function FloatingBadge({ label, vector, vectorClassName, className, floatDelay =
 
 export function ProcessSection() {
   return (
-    <section className="relative -mt-[2.5rem] px-6 py-24">
+    <section id="process" className="relative -mt-[2.5rem] px-6 py-24">
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-4 text-center">
         <p className="font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] whitespace-nowrap text-muted">
           Как мы работаем
@@ -109,6 +109,8 @@ export function ProcessSection() {
           variant="primary"
           className="absolute left-[calc(50%-5.375rem)]"
           leadingIcon={<BoxiconsSend className="relative size-[1.75rem] -rotate-90" />}
+          render={<a href="#contact" />}
+          nativeButton={false}
         >
           Бесплатный аудит
         </Button>

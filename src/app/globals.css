@@ -63,18 +63,58 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Mobile layout (`src/widgets/landing-mobile/*`) is authored in rem against a 360px-wide
-   Figma frame at the default 16px root. Rescale the root font-size fluidly below the `md`
-   breakpoint so every rem value in that layout scales proportionally with the viewport
-   instead of staying pinned to the 360px baseline. */
-@media (max-width: 767px) {
-  html {
-    font-size: clamp(14px, calc(100vw * (16 / 360)), 19px);
+/* Both layouts are authored in rem against a fixed Figma reference width at the default
+   16px root: the mobile layout (`src/widgets/landing-mobile/*`) against 360px, the desktop
+   layout (`src/widgets/landing/*`) against 1440px (`w-[90rem]`). Rescale the root font-size
+   fluidly so every rem value tracks the viewport continuously instead of snapping between
+   fixed sizes. Written as plain `@media (min-width)` rules in ascending order (not Tailwind
+   arbitrary variants like `md:`/`min-[1440px]:`) because Tailwind doesn't reliably sort a
+   named breakpoint against an arbitrary one — plain CSS cascade order is the only thing
+   guaranteed to pick the largest matching threshold.
+     - below 320px: frozen at the 320px value, so text never gets illegibly small.
+     - 320px – 430px: fluid against the 360px mobile reference (phone widths).
+     - 430px – md (768px): frozen at the 430px value (the widest common phone) — without
+       this, the mobile composition keeps scaling linearly with the vw formula all the way
+       to 768px and balloons to ~2x size on tablet-width windows before the layout switches
+       to the desktop composition, overflowing the viewport.
+     - md – 1440px: fluid against the 1440px desktop reference, so tablet/laptop windows
+       narrower than the full design width scale the desktop layout down instead of
+       overflowing or clipping.
+     - 1440px and up: frozen at 16px, matching the desktop layout's native size. */
+:root {
+  font-size: calc((16 / (360 / 100)) * (320 / 100) * 1px);
+}
+
+@media (min-width: 320px) {
+  :root {
+    font-size: calc((16 / (360 / 100)) * 1vw);
+  }
+}
+
+@media (min-width: 430px) {
+  :root {
+    font-size: calc((16 / (360 / 100)) * (430 / 100) * 1px);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: calc((16 / (1440 / 100)) * 1vw);
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    font-size: 16px;
   }
 }

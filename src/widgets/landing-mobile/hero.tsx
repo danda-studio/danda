@@ -63,6 +63,8 @@ export function HeroMobile() {
             variant="primary"
             className="rounded-[1rem] py-1 pr-5 pl-1 text-[1rem]"
             leadingIcon={<BoxiconsSend className="relative size-6 -rotate-90" />}
+            render={<a href="#contact-mobile" />}
+            nativeButton={false}
           >
             Бесплатный аудит
           </Button>

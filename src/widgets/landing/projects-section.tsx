@@ -9,17 +9,19 @@ import { cn } from "@/shared/lib/cn";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Tag } from "@/shared/ui/tag";
 
-const PEEK_STEP = 16; // px the not-yet-current cards peek out, per step behind
+const PEEK_STEP = 1; // rem the not-yet-current cards peek out, per step behind
 const PEEK_SCALE_STEP = 0.08; // the not-yet-current cards shrink slightly, per step behind
-const EXIT_DISTANCE = 900; // px an already-current card travels up when it's removed
+const EXIT_DISTANCE = 56.25; // rem an already-current card travels up when it's removed
 const DWELL = 0.15; // half-width (in step units) a card holds fully in place at its peak, so the handoff never leaves a gap
 
 function useCardMotion(step: MotionValue<number>, index: number) {
+  // In rem (not px) so the offsets stay in proportion to the card's own size, which is
+  // itself rem-based and rescales with the fluid root font-size across viewport widths.
   const y = useTransform(step, (v) => {
     const distance = v - index;
     if (Math.abs(distance) <= DWELL)
-      return 0;
-    return distance < 0 ? PEEK_STEP * (distance + DWELL) : -EXIT_DISTANCE * Math.min(distance - DWELL, 1);
+      return "0rem";
+    return distance < 0 ? `${PEEK_STEP * (distance + DWELL)}rem` : `${-EXIT_DISTANCE * Math.min(distance - DWELL, 1)}rem`;
   });
   // Only the width narrows for cards waiting their turn — the height always stays full,
   // so a peeking card's bottom edge never falls short of the exiting card's (which only
@@ -31,6 +33,22 @@ function useCardMotion(step: MotionValue<number>, index: number) {
     return distance < 0 ? 1 + PEEK_SCALE_STEP * (distance + DWELL) : 1;
   });
   return { y, scaleX };
+}
+
+// Static bottom scrim so the card's white text stays legible over busy background art —
+// present at all times regardless of scroll position, matching Figma where all 3 project
+// cards have this same soft blur baked into the bottom of their background image.
+function BottomBlurScrim() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 backdrop-blur-[1.875rem]"
+      style={{
+        maskImage: "linear-gradient(to bottom, transparent 45%, black 85%)",
+        WebkitMaskImage: "linear-gradient(to bottom, transparent 45%, black 85%)",
+      }}
+    />
+  );
 }
 
 function FoodDeliveryBackground() {
@@ -101,7 +119,7 @@ interface StackCardProps {
   description: string;
   tags: string[];
   current: string;
-  y: MotionValue<number> | number;
+  y: MotionValue<string> | string;
   scaleX: MotionValue<number> | number;
   zClassName: string;
   step: MotionValue<number>;
@@ -114,6 +132,7 @@ function StackCard({ background, name, description, tags, current, y, scaleX, zC
       <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[2rem]">
         {background}
       </div>
+      <BottomBlurScrim />
       <div className="absolute top-[32.625rem] left-[2.25rem] flex w-[26.5rem] flex-col items-start gap-[1.5rem]">
         <div className="flex w-[21.125rem] flex-col items-start gap-[1.25rem] text-white [word-break:break-word]">
           <p className="font-(family-name:--font-manrope-sans) text-[2.5rem] leading-none font-semibold tracking-[-0.075rem] whitespace-nowrap">
@@ -152,7 +171,7 @@ export function ProjectsSection() {
   const card2 = useCardMotion(step, 2);
 
   return (
-    <section className="relative -mt-[17.875rem] px-6 py-16">
+    <section id="projects" className="relative -mt-[17.875rem] px-6 py-16">
       <div className="mx-auto flex max-w-[87rem] items-baseline justify-between">
         <h2 className="font-(family-name:--font-manrope-sans) text-[3.5rem] leading-none font-semibold tracking-[-0.105rem] whitespace-nowrap text-black [word-break:break-word]">
           <BlurredStaggerText text="Наши проекты" />
@@ -162,11 +181,22 @@ export function ProjectsSection() {
         </p>
       </div>
 
-      <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[450vh] w-[87rem]">
-        <div className="sticky top-24 h-[47.5rem] w-full">
-          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card0.y} scaleX={card0.scaleX} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
-          <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={card1.y} scaleX={card1.scaleX} zClassName="z-20" step={step} totalProjects={PROJECTS.length} />
-          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card2.y} scaleX={card2.scaleX} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
+      {/* Height is rem (not vh) so the scroll distance stays proportional to the cards'
+          own rem-based size as the fluid root font-size rescales them across viewport
+          widths — a vh-based track wouldn't shrink alongside a shrinking card, leaving a
+          growing dead scroll zone with nothing to look at below the pinned card. */}
+      <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[253.125rem] w-[87rem]">
+        {/* A full-viewport-height sticky wrapper that flex-centers the fixed-size card box,
+            instead of a percentage `top`/`translate` trick on the sticky element itself —
+            percentage insets on `position: sticky` resolve against the containing block
+            (the very tall track), not the viewport, so they don't reliably center and can
+            leave the card pinned near the top with a large gap below it. */}
+        <div className="sticky top-0 flex h-dvh items-center">
+          <div className="relative h-[47.5rem] w-full">
+            <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card0.y} scaleX={card0.scaleX} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
+            <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={card1.y} scaleX={card1.scaleX} zClassName="z-20" step={step} totalProjects={PROJECTS.length} />
+            <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card2.y} scaleX={card2.scaleX} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
+          </div>
         </div>
       </div>
     </section>
