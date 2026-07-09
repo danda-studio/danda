@@ -12,17 +12,25 @@ import { Tag } from "@/shared/ui/tag";
 const PEEK_STEP = 16; // px the not-yet-current cards peek out, per step behind
 const PEEK_SCALE_STEP = 0.08; // the not-yet-current cards shrink slightly, per step behind
 const EXIT_DISTANCE = 900; // px an already-current card travels up when it's removed
+const DWELL = 0.15; // half-width (in step units) a card holds fully in place at its peak, so the handoff never leaves a gap
 
 function useCardMotion(step: MotionValue<number>, index: number) {
   const y = useTransform(step, (v) => {
     const distance = v - index;
-    return distance <= 0 ? PEEK_STEP * distance : -EXIT_DISTANCE * Math.min(distance, 1);
+    if (Math.abs(distance) <= DWELL)
+      return 0;
+    return distance < 0 ? PEEK_STEP * (distance + DWELL) : -EXIT_DISTANCE * Math.min(distance - DWELL, 1);
   });
-  const scale = useTransform(step, (v) => {
+  // Only the width narrows for cards waiting their turn — the height always stays full,
+  // so a peeking card's bottom edge never falls short of the exiting card's (which only
+  // ever translates, never scales) and leaves a gap at the bottom of the stack.
+  const scaleX = useTransform(step, (v) => {
     const distance = v - index;
-    return distance <= 0 ? 1 + PEEK_SCALE_STEP * distance : 1;
+    if (Math.abs(distance) <= DWELL)
+      return 1;
+    return distance < 0 ? 1 + PEEK_SCALE_STEP * (distance + DWELL) : 1;
   });
-  return { y, scale };
+  return { y, scaleX };
 }
 
 function FoodDeliveryBackground() {
@@ -94,15 +102,15 @@ interface StackCardProps {
   tags: string[];
   current: string;
   y: MotionValue<number> | number;
-  scale: MotionValue<number> | number;
+  scaleX: MotionValue<number> | number;
   zClassName: string;
   step: MotionValue<number>;
   totalProjects: number;
 }
 
-function StackCard({ background, name, description, tags, current, y, scale, zClassName, step, totalProjects }: StackCardProps) {
+function StackCard({ background, name, description, tags, current, y, scaleX, zClassName, step, totalProjects }: StackCardProps) {
   return (
-    <motion.div className={cn("absolute inset-0 origin-top overflow-clip rounded-[2rem]", zClassName)} style={{ y, scale }}>
+    <motion.div className={cn("absolute inset-0 origin-top overflow-clip rounded-[2rem]", zClassName)} style={{ y, scaleX }}>
       <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[2rem]">
         {background}
       </div>
@@ -156,9 +164,9 @@ export function ProjectsSection() {
 
       <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[450vh] w-[87rem]">
         <div className="sticky top-24 h-[47.5rem] w-full">
-          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card0.y} scale={card0.scale} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
-          <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={card1.y} scale={card1.scale} zClassName="z-20" step={step} totalProjects={PROJECTS.length} />
-          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card2.y} scale={card2.scale} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card0.y} scaleX={card0.scaleX} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<DrSmileBackground />} name={drSmile.name} description={drSmile.description} tags={drSmile.tags} current="02" y={card1.y} scaleX={card1.scaleX} zClassName="z-20" step={step} totalProjects={PROJECTS.length} />
+          <StackCard background={<FoodDeliveryBackground />} name={foodDelivery.name} description={foodDelivery.description} tags={foodDelivery.tags} current="01" y={card2.y} scaleX={card2.scaleX} zClassName="z-10" step={step} totalProjects={PROJECTS.length} />
         </div>
       </div>
     </section>
