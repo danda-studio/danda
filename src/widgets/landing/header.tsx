@@ -31,7 +31,7 @@ export function Header() {
         />
       </div>
 
-      <Button variant="primary" className="justify-self-end">
+      <Button variant="primary" className="justify-self-end" render={<a href="#contact" />} nativeButton={false}>
         Написать
       </Button>
     </header>

@@ -43,7 +43,7 @@ export function FooterMobile() {
         </div>
       </div>
 
-      <a href="#contact-mobile" className="mx-auto mt-4 flex w-[21rem] cursor-pointer items-center gap-3 rounded-[1rem] bg-brand py-1 pr-5 pl-1">
+      <a href="#contact-mobile" className="mx-auto mt-4 flex w-[21rem] cursor-pointer items-center gap-3 rounded-[1rem] bg-brand py-1 pr-5 pl-1 outline-none transition-colors hover:bg-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)] focus-visible:ring-offset-[0.125rem]">
         <div className="relative size-10 shrink-0 overflow-clip rounded-[0.75rem] bg-white">
           <div className="absolute top-[0.625rem] left-[0.625rem] flex size-6 items-center justify-center">
             <div className="-rotate-90 flex-none">
@@ -62,7 +62,11 @@ export function FooterMobile() {
         <p className="text-(--dd-gray-400)">Навигация</p>
         <div className="flex flex-col items-start gap-4 text-(--dd-gray-820)">
           {FOOTER_NAV_ITEMS.map(item => (
-            <a key={item.slug} href={`#${item.slug}`} className="cursor-pointer">
+            <a
+              key={item.slug}
+              href={`#${item.slug}`}
+              className="cursor-pointer rounded-[0.25rem] outline-none transition-colors hover:text-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
+            >
               {item.label}
             </a>
           ))}

@@ -1,4 +1,5 @@
 import { ContactSectionMobile } from "@/widgets/landing-mobile/contact-section";
+import { FloatingActionBarMobile } from "@/widgets/landing-mobile/floating-action-bar";
 import { FooterMobile } from "@/widgets/landing-mobile/footer";
 import { HeaderMobile } from "@/widgets/landing-mobile/header";
 import { HeroMobile } from "@/widgets/landing-mobile/hero";
@@ -40,6 +41,7 @@ export function LandingView() {
         <TestimonialsSectionMobile />
         <ContactSectionMobile />
         <FooterMobile />
+        <FloatingActionBarMobile />
       </div>
     </main>
   );

@@ -32,13 +32,24 @@ interface NavMenuProps {
   /** Appended to each section id — the mobile tree uses distinct ids from the desktop tree. */
   idSuffix?: string;
   align?: "center" | "right";
+  /**
+   * Which edge of the trigger the panel grows from — "bottom" for triggers pinned near the
+   * bottom of the viewport, where there's no room to expand downward.
+   */
+  panelAnchor?: "top" | "bottom";
+  /**
+   * Overrides the panel's positioning classes entirely (position + offsets), for triggers
+   * that sit off-center in a wider row — e.g. next to another button — where centering the
+   * panel on the trigger itself would overlap that sibling instead of the viewport.
+   */
+  panelPositionClassName?: string;
 }
 
 function MenuArrowIcon() {
   return <img alt="" className="size-[0.75rem]" src="/landing/desktop-6/menu-arrow.svg" />;
 }
 
-export function NavMenu({ closedContent, closedClassName, closedBg = "var(--dd-gray-200)", closedAriaLabel = "Меню", mode, idSuffix = "", align = "center" }: NavMenuProps) {
+export function NavMenu({ closedContent, closedClassName, closedBg = "var(--dd-gray-200)", closedAriaLabel = "Меню", mode, idSuffix = "", align = "center", panelAnchor = "top", panelPositionClassName }: NavMenuProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -77,7 +88,7 @@ export function NavMenu({ closedContent, closedClassName, closedBg = "var(--dd-g
             animate={{ backgroundColor: closedBg }}
             exit={{ backgroundColor: "#000000", transition: { duration: 0.28 } }}
             transition={{ layout: { duration: 0.28, ease: [0.4, 0, 0.2, 1] } }}
-            className={closedClassName}
+            className={cn(closedClassName, "outline-none focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)] focus-visible:ring-offset-[0.125rem]")}
             role="button"
             tabIndex={0}
             aria-label={closedAriaLabel}
@@ -109,8 +120,12 @@ export function NavMenu({ closedContent, closedClassName, closedBg = "var(--dd-g
             exit={{ backgroundColor: closedBg, transition: { duration: 0.28 } }}
             transition={{ layout: { duration: 0.28, ease: [0.4, 0, 0.2, 1] } }}
             className={cn(
-              "absolute top-0 z-50 flex w-[16.125rem] flex-col items-center gap-[1.5rem] rounded-[1.25rem] px-[1.25rem] py-[1rem]",
-              align === "center" ? "left-1/2 -translate-x-1/2" : "right-0",
+              "z-50 flex w-[16.125rem] flex-col items-center gap-[1.5rem] rounded-[1.25rem] px-[1.25rem] py-[1rem]",
+              panelPositionClassName ?? cn(
+                "absolute",
+                panelAnchor === "top" ? "top-0" : "bottom-0",
+                align === "center" ? "left-1/2 -translate-x-1/2" : "right-0",
+              ),
             )}
           >
             <motion.p
@@ -132,7 +147,7 @@ export function NavMenu({ closedContent, closedClassName, closedBg = "var(--dd-g
                   {i > 0 && <div className="h-0 w-full border-t-[0.04375rem] border-white/29" />}
                   <button
                     type="button"
-                    className="group flex w-full cursor-pointer items-center justify-between"
+                    className="group flex w-full cursor-pointer items-center justify-between rounded-[0.5rem] outline-none focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
                     onClick={() => handleItemClick(item.slug)}
                   >
                     <span className="font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-medium tracking-[-0.0625rem] text-white">

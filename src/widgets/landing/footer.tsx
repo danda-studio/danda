@@ -100,7 +100,7 @@ export function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-          className="absolute top-[26rem] left-[49.5625rem] flex cursor-pointer items-center justify-center gap-4 rounded-[1.25rem] bg-(--dd-blue-600) py-[0.625rem] pr-6 pl-[0.625rem]"
+          className="absolute top-[26rem] left-[49.5625rem] flex cursor-pointer items-center justify-center gap-4 rounded-[1.25rem] bg-(--dd-blue-600) py-[0.625rem] pr-6 pl-[0.625rem] outline-none transition-colors hover:bg-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)] focus-visible:ring-offset-[0.125rem]"
         >
           <div className="relative size-12 shrink-0 overflow-clip rounded-[1rem] bg-white">
             <div className="absolute top-[0.625rem] left-[0.625rem] flex size-7 items-center justify-center">
@@ -116,8 +116,10 @@ export function Footer() {
           </p>
         </motion.a>
 
-        {/* Контент (почта/копирайт + навигация) — накладывается поверх декоративной картинки, как в макете */}
-        <div className="absolute top-[20.9375rem] left-6 flex w-[87rem] items-start justify-between">
+        {/* Контент (почта/копирайт + навигация) — накладывается поверх декоративной картинки, как в макете.
+            `pointer-events-none` on this wide wrapper (only re-enabled on the actual nav links) so it doesn't
+            block clicks on the CTA buttons underneath it, which visually sit in the same region. */}
+        <div className="pointer-events-none absolute top-[20.9375rem] left-6 flex w-[87rem] items-start justify-between">
           <div className="flex flex-col items-start gap-6 [word-break:break-word]">
             <div className="flex flex-col items-start gap-[0.625rem] whitespace-nowrap">
               <p className="font-(family-name:--font-manrope-sans) text-[1.25rem] font-medium tracking-[-0.0625rem] text-(--dd-gray-400)">Напишите нам </p>
@@ -135,7 +137,11 @@ export function Footer() {
             <p className="text-(--dd-gray-400)">Навигация</p>
             <div className="flex flex-col items-start gap-4 text-(--dd-gray-820) whitespace-nowrap">
               {FOOTER_NAV_ITEMS.map(item => (
-                <a key={item.slug} href={`#${item.slug}`} className="cursor-pointer hover:text-black">
+                <a
+                  key={item.slug}
+                  href={`#${item.slug}`}
+                  className="pointer-events-auto cursor-pointer rounded-[0.25rem] outline-none transition-colors hover:text-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
+                >
                   {item.label}
                 </a>
               ))}

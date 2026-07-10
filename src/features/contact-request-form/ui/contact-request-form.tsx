@@ -140,14 +140,19 @@ export function ContactRequestForm() {
         </form.Field>
       </div>
 
-      <Button
-        type="submit"
-        variant="primary"
-        className="w-full"
-        leadingIcon={<BoxiconsSend className="relative size-7 -rotate-90" />}
-      >
-        {submitted ? "Отправлено" : "Бесплатный аудит"}
-      </Button>
+      <form.Subscribe selector={state => state.isSubmitting}>
+        {isSubmitting => (
+          <Button
+            type="submit"
+            variant="primary"
+            className="w-full"
+            loading={isSubmitting}
+            leadingIcon={<BoxiconsSend className="relative size-7 -rotate-90" />}
+          >
+            {submitted ? "Отправлено" : "Бесплатный аудит"}
+          </Button>
+        )}
+      </form.Subscribe>
     </form>
   );
 }
