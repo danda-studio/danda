@@ -2,18 +2,19 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
 import { VuesaxBoldCheck, VuesaxBoldDocumentCode, VuesaxBoldFolder, VuesaxBoldLampOn, VuesaxBoldPath, VuesaxBoldProfile2User } from "@/shared/ui/icons/vuesax";
 
 const glassIconWrapperClassName = "relative flex size-[1.5rem] shrink-0 items-center justify-center overflow-clip rounded-[0.375rem] bg-white";
-const glassIconWrapperBrandClassName = `${glassIconWrapperClassName} bg-brand`;
+const glassIconWrapperBrandClassName = cn(glassIconWrapperClassName, "bg-brand");
 
 export function HeroMobile() {
   return (
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute top-0 left-1/2 h-[36.25rem] w-[61rem] -translate-x-1/2 opacity-70">
-        <Image alt="" fill priority sizes="976px" className="object-cover" src="/landing/desktop-6/dots.svg" />
+        <Image alt="" fill priority fetchPriority="high" sizes="976px" className="object-cover" src="/landing/desktop-6/dots.svg" />
       </div>
 
       <div className="relative mx-auto flex w-[22.5rem] max-w-full flex-col items-center gap-3 px-3 pt-[6.5rem] text-center">
@@ -39,7 +40,7 @@ export function HeroMobile() {
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-          className="absolute top-[14.75rem] left-[15.125rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+          className="absolute top-[14.75rem] right-[1rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
         >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldDocumentCode className="size-2" />
@@ -60,10 +61,13 @@ export function HeroMobile() {
         <div className="relative mx-auto size-[23.25rem] max-w-full">
           <Image
             alt=""
-            fill
+            width={800}
+            height={800}
             priority
-            sizes="372px"
-            className="pointer-events-none object-cover"
+            fetchPriority="high"
+            quality={55}
+            sizes="450px"
+            className="pointer-events-none size-full object-cover"
             src="/landing/desktop-6/chat-gpt-image1820260242201.png"
           />
         </div>

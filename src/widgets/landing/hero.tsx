@@ -30,17 +30,18 @@ export function Hero() {
 
       <div className="relative mx-auto mt-[-8.3125rem] w-full">
         <div className="mx-auto flex size-[54.9525rem] max-w-full items-center justify-center">
-          <div className="flex-none -rotate-6">
-            <div className="relative size-[50rem]" data-name="ChatGPT Image 18 янв. 2026 г., 02_42_20 1">
-              <Image
-                alt=""
-                fill
-                priority
-                sizes="800px"
-                className="pointer-events-none object-cover"
-                src="/landing/desktop-6/chat-gpt-image1820260242201.png"
-              />
-            </div>
+          <div className="flex-none -rotate-6" data-name="ChatGPT Image 18 янв. 2026 г., 02_42_20 1">
+            <Image
+              alt=""
+              width={800}
+              height={800}
+              priority
+              fetchPriority="high"
+              quality={55}
+              sizes="800px"
+              className="pointer-events-none size-[50rem] max-w-none object-cover"
+              src="/landing/desktop-6/chat-gpt-image1820260242201.png"
+            />
           </div>
         </div>
 

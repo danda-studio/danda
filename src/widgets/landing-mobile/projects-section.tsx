@@ -112,7 +112,7 @@ export function ProjectsSectionMobile() {
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[42.5rem] w-full">
             <StackCard
-              background={<Image alt="" fill sizes="336px" className="object-cover" src="/landing/mobile/selix-card.png" />}
+              background={<Image alt="" fill quality={55} sizes="410px" className="object-cover" src="/landing/mobile/selix-card.png" />}
               name={selix.name}
               description={selix.description}
               tags={selix.tags}
@@ -122,7 +122,7 @@ export function ProjectsSectionMobile() {
               zClassName="z-30"
             />
             <StackCard
-              background={<Image alt="" fill sizes="336px" className="object-cover" src="/landing/mobile/drsmile-card.png" />}
+              background={<Image alt="" fill quality={55} sizes="410px" className="object-cover" src="/landing/mobile/drsmile-card.png" />}
               name={drSmile.name}
               description={drSmile.description}
               tags={drSmile.tags}
@@ -132,7 +132,7 @@ export function ProjectsSectionMobile() {
               zClassName="z-20"
             />
             <StackCard
-              background={<Image alt="" fill sizes="336px" className="object-cover" src="/landing/mobile/fooddelivery-card.png" />}
+              background={<Image alt="" fill quality={55} sizes="410px" className="object-cover" src="/landing/mobile/fooddelivery-card.png" />}
               name={foodDelivery.name}
               description={foodDelivery.description}
               tags={foodDelivery.tags}

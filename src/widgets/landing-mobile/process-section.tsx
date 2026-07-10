@@ -2,10 +2,11 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
+import { cn } from "@/shared/lib/cn";
 import { VuesaxBoldCheck, VuesaxBoldDocumentCode, VuesaxBoldFolder, VuesaxBoldLampOn, VuesaxBoldPath, VuesaxBoldProfile2User } from "@/shared/ui/icons/vuesax";
 
 const glassIconWrapperClassName = "relative flex size-[1.5rem] shrink-0 items-center justify-center overflow-clip rounded-[0.375rem] bg-white";
-const glassIconWrapperBrandClassName = `${glassIconWrapperClassName} bg-brand`;
+const glassIconWrapperBrandClassName = cn(glassIconWrapperClassName, "bg-brand");
 
 function Divider() {
   return (
@@ -67,7 +68,7 @@ export function ProcessSectionMobile() {
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-          className="absolute top-[9.125rem] left-[15rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+          className="absolute top-[9.125rem] right-[0.25rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
         >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldDocumentCode className="size-2" />

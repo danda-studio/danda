@@ -65,6 +65,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Reserves the scrollbar's width up front so 1vw-based fluid sizing (below) is computed
+     against the actually-visible viewport, not the full window width. Without this, content
+     pinned to the right edge (e.g. right-0) renders a few pixels too wide and gets clipped
+     under a classic (non-overlay) scrollbar. */
+  scrollbar-gutter: stable;
 }
 
 body {

@@ -94,7 +94,7 @@ function StackCard({ card, title, step }: { card: StackCardData; title: string; 
       <div className="flex-none" style={{ transform: `rotate(${card.rotateDeg}deg)` }}>
         <div className="relative h-[15.9375rem] w-[15.63875rem] overflow-clip rounded-[0.99613rem] bg-white">
           <div className="absolute top-0 left-1/2 h-[12.4375rem] w-[15.63875rem] -translate-x-1/2">
-            <Image alt="" fill sizes="250px" className="object-cover" src={card.image} />
+            <Image alt="" fill quality={55} sizes="300px" className="object-cover" src={card.image} />
           </div>
           <p
             className="absolute left-[1.25rem] font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-semibold tracking-[-0.04rem] text-black [word-break:break-word]"
