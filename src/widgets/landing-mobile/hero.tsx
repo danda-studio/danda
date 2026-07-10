@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "motion/react";
+import Image from "next/image";
 import { Button } from "@/shared/ui/button";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
 import { VuesaxBoldCheck, VuesaxBoldDocumentCode, VuesaxBoldFolder, VuesaxBoldLampOn, VuesaxBoldPath, VuesaxBoldProfile2User } from "@/shared/ui/icons/vuesax";
@@ -9,7 +13,7 @@ export function HeroMobile() {
   return (
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute top-0 left-1/2 h-[36.25rem] w-[61rem] -translate-x-1/2 opacity-70">
-        <img alt="" className="absolute block inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/dots.svg" />
+        <Image alt="" fill priority sizes="976px" className="object-cover" src="/landing/desktop-6/dots.svg" />
       </div>
 
       <div className="relative mx-auto flex w-[22.5rem] max-w-full flex-col items-center gap-3 px-3 pt-[6.5rem] text-center">
@@ -20,15 +24,23 @@ export function HeroMobile() {
           Мы берем на себя сложность.От сайта до сложного сервиса или приложения
         </h1>
 
-        <div className="absolute top-[5.1875rem] left-[0.875rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]">
+        <motion.div
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[11.6875rem] left-[0.875rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+        >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldFolder className="size-2" />
           </div>
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldCheck className="size-2" />
           </div>
-        </div>
-        <div className="absolute top-[8.75rem] left-[15.125rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]">
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+          className="absolute top-[14.75rem] left-[15.125rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+        >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldDocumentCode className="size-2" />
           </div>
@@ -41,14 +53,17 @@ export function HeroMobile() {
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldLampOn className="size-2" />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="relative mx-auto mt-[1.125rem] w-[22.5rem] max-w-full">
         <div className="relative mx-auto size-[23.25rem] max-w-full">
-          <img
+          <Image
             alt=""
-            className="pointer-events-none absolute inset-0 size-full max-w-none object-cover"
+            fill
+            priority
+            sizes="372px"
+            className="pointer-events-none object-cover"
             src="/landing/desktop-6/chat-gpt-image1820260242201.png"
           />
         </div>

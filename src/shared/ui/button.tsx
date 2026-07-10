@@ -1,6 +1,7 @@
 import type { ButtonProps as BaseButtonProps } from "@base-ui/react/button";
 import type { ReactNode } from "react";
 import { Button as BaseButton } from "@base-ui/react/button";
+import Image from "next/image";
 import { cn } from "@/shared/lib/cn";
 
 type Variant = "primary" | "dark" | "light";
@@ -45,7 +46,7 @@ export function Button({ variant = "primary", leadingIcon, trailingIcon, classNa
         <span className={cn("flex size-12 shrink-0 items-center justify-center overflow-clip rounded-[1rem]", isDisabled ? "bg-[var(--dd-gray-350)]" : "bg-white")}>
           {loading
             ? (
-                <img alt="" className="size-7 animate-spin" src="/landing/desktop-6/loader.svg" />
+                <Image alt="" width={28} height={28} className="size-7 animate-spin" src="/landing/desktop-6/loader.svg" />
               )
             : (
                 leadingIcon

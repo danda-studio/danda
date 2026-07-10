@@ -2,6 +2,7 @@
 
 import type { MotionValue } from "motion/react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { SERVICES } from "@/entities/service";
 import { Button } from "@/shared/ui/button";
@@ -92,7 +93,9 @@ function StackCard({ card, title, step }: { card: StackCardData; title: string; 
     >
       <div className="flex-none" style={{ transform: `rotate(${card.rotateDeg}deg)` }}>
         <div className="relative h-[15.9375rem] w-[15.63875rem] overflow-clip rounded-[0.99613rem] bg-white">
-          <img alt="" className="absolute top-0 left-1/2 h-[12.4375rem] w-[15.63875rem] max-w-none -translate-x-1/2 object-cover" src={card.image} />
+          <div className="absolute top-0 left-1/2 h-[12.4375rem] w-[15.63875rem] -translate-x-1/2">
+            <Image alt="" fill sizes="250px" className="object-cover" src={card.image} />
+          </div>
           <p
             className="absolute left-[1.25rem] font-(family-name:--font-manrope-sans) text-[1.25rem] leading-[1.2] font-semibold tracking-[-0.04rem] text-black [word-break:break-word]"
             style={{ bottom: `${card.titleBottomRem}rem`, width: `${card.titleWidthRem}rem` }}
@@ -124,7 +127,9 @@ export function ServicesBannerMobile() {
       <div ref={trackRef} className="relative mx-auto h-[160rem] w-[21rem]">
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[45rem] w-full overflow-clip rounded-[1.5rem] bg-brand">
-            <img alt="" className="pointer-events-none absolute top-1/2 left-1/2 h-[30.625rem] w-[49.6875rem] max-w-none -translate-x-1/2 -translate-y-[calc(50%+7.75rem)]" src="/landing/mobile/services-dots.svg" />
+            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[30.625rem] w-[49.6875rem] -translate-x-1/2 -translate-y-[calc(50%+7.75rem)]">
+              <Image alt="" fill sizes="795px" className="object-cover" src="/landing/mobile/services-dots.svg" />
+            </div>
             <div className="pointer-events-none absolute top-[16.5rem] left-0 h-[25rem] w-[21rem] bg-gradient-to-t from-brand from-[39.21%] to-(--dd-fade-black-transparent)" />
 
             {/* Rendered back-to-front (index 3 first) so the earliest-revealed card (index 0)
@@ -167,7 +172,7 @@ export function ServicesBannerMobile() {
                     <Tag
                       key={badge.name}
                       className="rounded-[0.625rem] border-[0.04375rem] px-3 py-2 text-[0.75rem] tracking-[-0.0225rem]"
-                      icon={<img alt="" className="pointer-events-none size-3 object-cover" src={badge.icon} />}
+                      icon={<Image alt="" width={12} height={12} className="pointer-events-none size-3 object-cover" src={badge.icon} />}
                     >
                       {badge.name}
                     </Tag>

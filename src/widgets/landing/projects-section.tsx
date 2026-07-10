@@ -3,6 +3,7 @@
 import type { MotionValue } from "motion/react";
 import type { ReactNode } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
 import { cn } from "@/shared/lib/cn";
@@ -54,8 +55,8 @@ function BottomBlurScrim() {
 function FoodDeliveryBackground() {
   return (
     <>
-      <img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/food-delivery-bg.png" />
-      <img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/food-delivery-bg2.png" />
+      <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/food-delivery-bg.png" />
+      <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/food-delivery-bg2.png" />
     </>
   );
 }
@@ -65,14 +66,18 @@ function DrSmileBackground() {
     <>
       <div className="absolute inset-0 bg-gradient-to-b from-(--dd-blue-200) to-(--dd-blue-300) to-[62.566%]" />
       <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="absolute top-[-5.84%] left-[3.19%] h-[94.71%] w-[93.65%] max-w-none" src="/landing/desktop-6/frame2136141697.png" />
+        <div className="absolute top-[-5.84%] left-[3.19%] h-[94.71%] w-[93.65%]">
+          <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/frame2136141697.png" />
+        </div>
       </div>
       <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="absolute top-[-2.83%] left-0 h-[116.04%] w-full max-w-none" src="/landing/desktop-6/frame2136141698.png" />
+        <div className="absolute top-[-2.83%] left-0 h-[116.04%] w-full">
+          <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/frame2136141698.png" />
+        </div>
       </div>
       <div className="absolute top-[30rem] left-[-12.8125rem] h-[26.625rem] w-[45rem]">
         <div className="absolute inset-[-56.64%_-33.51%]">
-          <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/ellipse11731.svg" />
+          <Image alt="" fill sizes="720px" className="object-cover" src="/landing/desktop-6/ellipse11731.svg" />
         </div>
       </div>
     </>
@@ -84,11 +89,15 @@ function SelixBackground() {
     <>
       <div className="absolute inset-0 bg-(--dd-gray-100)" />
       <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full max-w-none" src="/landing/desktop-6/frame2136141693.jpg" />
+        <div className="absolute top-[-3.1%] left-[0.02%] h-[121.24%] w-full">
+          <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/frame2136141693.jpg" />
+        </div>
       </div>
-      <img alt="" className="absolute size-full max-w-none object-cover" src="/landing/desktop-6/frame2136141694.png" />
+      <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/frame2136141694.png" />
       <div className="absolute inset-0 overflow-hidden">
-        <img alt="" className="absolute top-[-13.88%] left-0 h-[137.37%] w-full max-w-none" src="/landing/desktop-6/frame2136141695.jpg" />
+        <div className="absolute top-[-13.88%] left-0 h-[137.37%] w-full">
+          <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/frame2136141695.jpg" />
+        </div>
       </div>
     </>
   );

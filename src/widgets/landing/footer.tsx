@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 
 const FOOTER_NAV_ITEMS = [
@@ -19,13 +20,13 @@ export function Footer() {
     <footer className="relative mt-[1.875rem] overflow-x-clip bg-white">
       <div className="relative mx-auto h-[53.25rem] w-[90rem]">
         <div className="pointer-events-none absolute top-0 left-1/2 h-[55.4375rem] w-[90rem] -translate-x-1/2">
-          <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/dots.svg" />
+          <Image alt="" fill sizes="1440px" className="object-cover" src="/landing/desktop-6/dots.svg" />
         </div>
         <div className="pointer-events-none absolute top-[-0.25rem] left-1/2 flex h-[34.4375rem] w-[90rem] -translate-x-1/2 items-center justify-center">
           <div className="-scale-y-100 flex-none">
             <div className="relative h-[34.4375rem] w-[90rem]">
               <div className="absolute inset-[-18.15%_-6.94%]">
-                <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/rectangle2087329707.svg" />
+                <Image alt="" fill sizes="1440px" className="object-cover" src="/landing/desktop-6/rectangle2087329707.svg" />
               </div>
             </div>
           </div>
@@ -33,26 +34,26 @@ export function Footer() {
         <div className="absolute top-[-8.125rem] left-[18.6875rem] flex size-[54.9525rem] items-center justify-center">
           <motion.div style={{ y: logoY, rotate: -6 }} className="flex-none">
             <div className="relative size-[50rem]" data-name="ChatGPT Image 18 янв. 2026 г., 02_42_20 2">
-              <img alt="" className="pointer-events-none absolute inset-0 size-full max-w-none object-cover" src="/landing/desktop-6/chat-gpt-image1820260242201.png" />
+              <Image alt="" fill sizes="800px" className="pointer-events-none object-cover" src="/landing/desktop-6/chat-gpt-image1820260242201.png" />
             </div>
           </motion.div>
         </div>
 
         {/* Декоративный логотип-"кости" Danda */}
         <div className="absolute h-[12.79144rem] left-[74.68438rem] top-[40.4425rem] w-[16.37788rem]" data-name="Vector">
-          <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/vector3.svg" />
+          <Image alt="" fill sizes="262px" className="object-cover" src="/landing/desktop-6/vector3.svg" />
         </div>
         <div ref={danndaRef} className="absolute h-[17.60813rem] left-[56.81188rem] top-[35.625rem] w-[16.51456rem]" data-name="Vector">
-          <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/vector4.svg" />
+          <Image alt="" fill sizes="264px" className="object-cover" src="/landing/desktop-6/vector4.svg" />
         </div>
         <div className="absolute h-[12.83688rem] left-[39.74562rem] top-[40.10188rem] w-[15.46675rem]" data-name="Vector">
-          <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/vector5.svg" />
+          <Image alt="" fill sizes="248px" className="object-cover" src="/landing/desktop-6/vector5.svg" />
         </div>
         <div className="absolute h-[12.79144rem] left-[21.09313rem] top-[40.4425rem] w-[16.37788rem]" data-name="Vector">
-          <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/vector6.svg" />
+          <Image alt="" fill sizes="262px" className="object-cover" src="/landing/desktop-6/vector6.svg" />
         </div>
         <div className="absolute h-[15.90413rem] -left-2 top-[37.03375rem] w-[20.68306rem]" data-name="Vector">
-          <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/vector7.svg" />
+          <Image alt="" fill sizes="331px" className="object-cover" src="/landing/desktop-6/vector7.svg" />
         </div>
         <div className="absolute flex h-[5.58194rem] items-center justify-center left-118 top-[38.4375rem] w-[19.89738rem]">
           <div className="flex-none rotate-[-4.85deg]">
@@ -88,7 +89,7 @@ export function Footer() {
           {["boxicons-logo.svg", "boxicons-logo1.svg", "boxicons-logo2.svg"].map(icon => (
             <div key={icon} className="relative size-[4.1125rem] shrink-0 overflow-clip rounded-[1.23375rem] bg-white">
               <div className="absolute top-1/2 left-1/2 size-9 -translate-x-1/2 -translate-y-1/2">
-                <img alt="" className="absolute inset-0 block size-full max-w-none" src={`/landing/desktop-6/${icon}`} />
+                <Image alt="" fill sizes="36px" className="object-cover" src={`/landing/desktop-6/${icon}`} />
               </div>
             </div>
           ))}
@@ -106,7 +107,7 @@ export function Footer() {
             <div className="absolute top-[0.625rem] left-[0.625rem] flex size-7 items-center justify-center">
               <div className="-rotate-90 flex-none">
                 <div className="relative size-7" data-name="Boxicons">
-                  <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/boxicons.svg" />
+                  <Image alt="" fill sizes="28px" className="object-cover" src="/landing/desktop-6/boxicons.svg" />
                 </div>
               </div>
             </div>

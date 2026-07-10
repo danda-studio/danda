@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "motion/react";
+import Image from "next/image";
 import { VuesaxBoldCheck, VuesaxBoldDocumentCode, VuesaxBoldFolder, VuesaxBoldLampOn, VuesaxBoldPath, VuesaxBoldProfile2User } from "@/shared/ui/icons/vuesax";
 
 const glassIconWrapperClassName = "relative flex size-[1.5rem] shrink-0 items-center justify-center overflow-clip rounded-[0.375rem] bg-white";
@@ -7,7 +11,7 @@ function Divider() {
   return (
     <div className="relative h-0 w-full shrink-0">
       <div className="absolute inset-[-0.04375rem_0_0_0]">
-        <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/line18.svg" />
+        <Image alt="" fill sizes="336px" className="object-cover" src="/landing/desktop-6/line18.svg" />
       </div>
     </div>
   );
@@ -48,15 +52,23 @@ export function ProcessSectionMobile() {
           <span className="text-[1rem] leading-[1.2] text-black">Для бизнеса, который ценит ясность и стабильность</span>
         </p>
 
-        <div className="absolute top-[7.5625rem] left-[0.8125rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]">
+        <motion.div
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[7.5625rem] left-[0.8125rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+        >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldFolder className="size-2" />
           </div>
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldCheck className="size-2" />
           </div>
-        </div>
-        <div className="absolute top-[9.125rem] left-[15rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]">
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+          className="absolute top-[9.125rem] left-[15rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+        >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldDocumentCode className="size-2" />
           </div>
@@ -69,7 +81,7 @@ export function ProcessSectionMobile() {
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldLampOn className="size-2" />
           </div>
-        </div>
+        </motion.div>
         <div className="absolute top-[15.4375rem] left-[1.6875rem] flex items-center justify-center rounded-[1.8281rem] bg-brand px-[0.5rem] py-[0.25rem] backdrop-blur-[0.8203rem]">
           <p className="font-(family-name:--font-manrope-sans) text-[0.75rem] font-medium tracking-[-0.0225rem] whitespace-nowrap text-white">
             Developer

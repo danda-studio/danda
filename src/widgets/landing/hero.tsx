@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Button } from "@/shared/ui/button";
 import { GlassIconCluster } from "@/shared/ui/glass-icon-cluster";
@@ -7,11 +8,11 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute top-[-2.25rem] left-1/2 h-[55.4375rem] w-[90rem] -translate-x-1/2" data-name="dots">
-        <img alt="" className="absolute block inset-0 size-full max-w-none" src="/landing/desktop-6/dots.svg" />
+        <Image alt="" fill sizes="1440px" className="object-cover" src="/landing/desktop-6/dots.svg" />
       </div>
       <div className="pointer-events-none absolute top-[28.0625rem] left-0 h-[23.1875rem] w-[90rem]">
         <div className="absolute inset-[-26.95%_-6.94%]">
-          <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/rectangle2087329706.svg" />
+          <Image alt="" fill sizes="1440px" className="object-cover" src="/landing/desktop-6/rectangle2087329706.svg" />
         </div>
       </div>
 
@@ -31,9 +32,12 @@ export function Hero() {
         <div className="mx-auto flex size-[54.9525rem] max-w-full items-center justify-center">
           <div className="flex-none -rotate-6">
             <div className="relative size-[50rem]" data-name="ChatGPT Image 18 янв. 2026 г., 02_42_20 1">
-              <img
+              <Image
                 alt=""
-                className="pointer-events-none absolute inset-0 size-full max-w-none object-cover"
+                fill
+                priority
+                sizes="800px"
+                className="pointer-events-none object-cover"
                 src="/landing/desktop-6/chat-gpt-image1820260242201.png"
               />
             </div>

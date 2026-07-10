@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/shared/lib/cn";
 
@@ -46,7 +47,7 @@ interface NavMenuProps {
 }
 
 function MenuArrowIcon() {
-  return <img alt="" className="size-[0.75rem]" src="/landing/desktop-6/menu-arrow.svg" />;
+  return <Image alt="" width={12} height={12} className="size-[0.75rem]" src="/landing/desktop-6/menu-arrow.svg" />;
 }
 
 export function NavMenu({ closedContent, closedClassName, closedBg = "var(--dd-gray-200)", closedAriaLabel = "Меню", mode, idSuffix = "", align = "center", panelAnchor = "top", panelPositionClassName }: NavMenuProps) {

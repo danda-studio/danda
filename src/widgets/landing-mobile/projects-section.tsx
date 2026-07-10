@@ -3,6 +3,7 @@
 import type { MotionValue } from "motion/react";
 import type { ReactNode } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import { useRef } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
 import { cn } from "@/shared/lib/cn";
@@ -63,7 +64,7 @@ function StackCard({ background, name, description, tags, current, y, scaleX, zC
         {background}
       </div>
       <BottomBlurScrim />
-      <div className="absolute top-[25.5rem] left-[1.5rem] flex w-[17.6875rem] flex-col items-start gap-[1.25rem]">
+      <div className="absolute top-[25.5rem] left-[1.5rem] flex w-[18.5rem] flex-col items-start gap-[1.25rem]">
         <div className="flex flex-col items-start gap-[0.75rem] text-white [word-break:break-word]">
           <p className="font-(family-name:--font-manrope-sans) text-[1.75rem] leading-none font-semibold tracking-[-0.0525rem] whitespace-nowrap">
             {name}
@@ -111,7 +112,7 @@ export function ProjectsSectionMobile() {
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[42.5rem] w-full">
             <StackCard
-              background={<img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/mobile/selix-card.png" />}
+              background={<Image alt="" fill sizes="336px" className="object-cover" src="/landing/mobile/selix-card.png" />}
               name={selix.name}
               description={selix.description}
               tags={selix.tags}
@@ -121,7 +122,7 @@ export function ProjectsSectionMobile() {
               zClassName="z-30"
             />
             <StackCard
-              background={<img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/mobile/drsmile-card.png" />}
+              background={<Image alt="" fill sizes="336px" className="object-cover" src="/landing/mobile/drsmile-card.png" />}
               name={drSmile.name}
               description={drSmile.description}
               tags={drSmile.tags}
@@ -131,7 +132,7 @@ export function ProjectsSectionMobile() {
               zClassName="z-20"
             />
             <StackCard
-              background={<img alt="" className="absolute inset-0 size-full max-w-none object-cover" src="/landing/mobile/fooddelivery-card.png" />}
+              background={<Image alt="" fill sizes="336px" className="object-cover" src="/landing/mobile/fooddelivery-card.png" />}
               name={foodDelivery.name}
               description={foodDelivery.description}
               tags={foodDelivery.tags}

@@ -28,7 +28,7 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         </p>
         <div className="flex w-full items-center gap-4">
           <div className="relative size-14 shrink-0 overflow-hidden rounded-full">
-            <Image alt="" fill src={testimonial.avatar} className="object-cover" />
+            <Image alt="" fill sizes="56px" src={testimonial.avatar} className="object-cover" />
           </div>
           <div className="flex flex-1 flex-col items-start justify-center gap-[0.125rem]">
             <p className={cn("text-[1.25rem] tracking-[-0.0625rem] whitespace-nowrap", fontClassName, isLight ? "text-[var(--dd-gray-800)]" : "text-white")}>

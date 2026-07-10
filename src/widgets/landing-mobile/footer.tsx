@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const FOOTER_NAV_ITEMS = [
   { label: "Портфолио", slug: "projects-mobile" },
   { label: "Этапы работы", slug: "process-mobile" },
@@ -10,9 +12,11 @@ export function FooterMobile() {
     <footer className="relative overflow-hidden bg-white px-3 pt-16 pb-8">
       <div className="mx-auto flex w-[22.5rem] max-w-full items-center justify-center">
         <div className="relative size-[27.25rem] max-w-full">
-          <img
+          <Image
             alt=""
-            className="pointer-events-none absolute inset-0 size-full max-w-none object-contain"
+            fill
+            sizes="436px"
+            className="pointer-events-none object-contain"
             src="/landing/desktop-6/chat-gpt-image1820260242201.png"
           />
         </div>
@@ -36,7 +40,7 @@ export function FooterMobile() {
           {["boxicons-logo.svg", "boxicons-logo1.svg", "boxicons-logo2.svg"].map(icon => (
             <div key={icon} className="relative size-10 shrink-0 overflow-clip rounded-[0.75rem] bg-white">
               <div className="absolute top-1/2 left-1/2 size-5 -translate-x-1/2 -translate-y-1/2">
-                <img alt="" className="absolute inset-0 block size-full max-w-none" src={`/landing/desktop-6/${icon}`} />
+                <Image alt="" fill sizes="20px" className="object-cover" src={`/landing/desktop-6/${icon}`} />
               </div>
             </div>
           ))}
@@ -48,7 +52,7 @@ export function FooterMobile() {
           <div className="absolute top-[0.625rem] left-[0.625rem] flex size-6 items-center justify-center">
             <div className="-rotate-90 flex-none">
               <div className="relative size-6" data-name="Boxicons">
-                <img alt="" className="absolute inset-0 block size-full max-w-none" src="/landing/desktop-6/boxicons.svg" />
+                <Image alt="" fill sizes="24px" className="object-cover" src="/landing/desktop-6/boxicons.svg" />
               </div>
             </div>
           </div>
@@ -74,7 +78,7 @@ export function FooterMobile() {
       </div>
 
       <div className="mx-auto mt-10 flex w-[22.5rem] max-w-full items-center justify-center overflow-hidden">
-        <img alt="" className="w-full max-w-none" src="/landing/mobile/danda-wordmark.svg" />
+        <Image alt="" width={360} height={71.7544} className="h-auto w-full" src="/landing/mobile/danda-wordmark.svg" />
       </div>
     </footer>
   );

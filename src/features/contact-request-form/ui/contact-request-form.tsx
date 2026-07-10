@@ -86,7 +86,7 @@ export function ContactRequestForm() {
         </form.Field>
         <div className="flex h-8 items-center gap-1.5 rounded-[1.875rem] bg-brand px-3 py-1.75 text-white">
           <span className="relative size-4 shrink-0">
-            <Image alt="" fill src="/landing/desktop-6/boxicons1.svg" />
+            <Image alt="" fill sizes="16px" src="/landing/desktop-6/boxicons1.svg" />
           </span>
           <span className="font-(family-name:--font-manrope-sans) text-[0.875rem] font-medium leading-[1.3]">Прикрепить файл</span>
         </div>

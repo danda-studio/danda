@@ -1,5 +1,7 @@
-import { ContactRequestForm } from "@/features/contact-request-form";
+import dynamic from "next/dynamic";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
+
+const ContactRequestForm = dynamic(() => import("@/features/contact-request-form").then(mod => mod.ContactRequestForm));
 
 export function ContactSection() {
   return (

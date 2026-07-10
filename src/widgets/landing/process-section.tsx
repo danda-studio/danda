@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { BlurredStaggerText } from "@/shared/ui/blurred-stagger-text";
 import { Button } from "@/shared/ui/button";
 import { GlassIconCluster } from "@/shared/ui/glass-icon-cluster";
@@ -29,7 +30,7 @@ function Divider() {
   return (
     <div className="relative h-0 w-full shrink-0">
       <div className="absolute inset-[-0.04375rem_0_0_0]">
-        <img alt="" className="block size-full max-w-none" src="/landing/desktop-6/line18.svg" />
+        <Image alt="" fill sizes="1392px" className="object-cover" src="/landing/desktop-6/line18.svg" />
       </div>
     </div>
   );
@@ -50,7 +51,7 @@ function FloatingBadge({ label, vector, vectorClassName, className, floatDelay =
       <div className={vectorClassName}>
         <div className="relative h-[1.5rem] w-[1.375rem]">
           <div className="absolute inset-[7.58%_23.18%_21.35%_3.09%]">
-            <img alt="" className="block size-full max-w-none" src={vector} />
+            <Image alt="" fill sizes="24px" className="object-cover" src={vector} />
           </div>
         </div>
       </div>

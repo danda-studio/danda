@@ -2,6 +2,7 @@
 
 import type { MotionValue } from "motion/react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { SERVICES } from "@/entities/service";
 import { Button } from "@/shared/ui/button";
@@ -91,7 +92,9 @@ function StackCard({ card, title, step }: { card: StackCardData; title: string; 
     >
       <div className="flex-none" style={{ transform: `rotate(${card.rotateDeg}deg)` }}>
         <div className="relative h-[25rem] w-[24.5rem] overflow-clip rounded-[1.5rem] bg-white shadow-[1rem_-0.8125rem_4.29375rem_0.3125rem_var(--dd-shadow-transparent)]">
-          <img alt="" className="absolute top-0 left-1/2 h-[19.5rem] w-[24.5rem] max-w-none -translate-x-1/2 object-cover" src={card.image} />
+          <div className="absolute top-0 left-1/2 h-[19.5rem] w-[24.5rem] -translate-x-1/2">
+            <Image alt="" fill sizes="392px" className="object-cover" src={card.image} />
+          </div>
           <p
             className="absolute left-[2rem] font-(family-name:--font-manrope-sans) text-[2rem] leading-[1.2] font-semibold tracking-[-0.0625rem] text-black [word-break:break-word]"
             style={{ bottom: `${card.titleBottomRem}rem`, width: `${card.titleWidthRem}rem` }}
@@ -123,7 +126,7 @@ export function ServicesBanner() {
       <div ref={trackRef} className="relative mx-auto h-[200rem] w-[87rem]">
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[47.375rem] w-full overflow-clip rounded-[2rem] bg-brand">
-            <img alt="" className="pointer-events-none absolute inset-0 size-full object-cover" src="/landing/desktop-6/services-bg-new.svg" />
+            <Image alt="" fill sizes="1392px" className="pointer-events-none object-cover" src="/landing/desktop-6/services-bg-new.svg" />
 
             {/* Rendered back-to-front (index 3 first) so the earliest-revealed card (index 0)
                 always paints on top, matching Figma's own layer order — each card's z-order
@@ -181,7 +184,7 @@ export function ServicesBanner() {
                 {active.techBadges.map(badge => (
                   <Tag
                     key={badge.name}
-                    icon={<img alt="" className="pointer-events-none size-[1.25rem] object-cover" src={badge.icon} />}
+                    icon={<Image alt="" width={20} height={20} className="pointer-events-none size-[1.25rem] object-cover" src={badge.icon} />}
                   >
                     {badge.name}
                   </Tag>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 import { TestimonialCard, TESTIMONIALS } from "@/entities/testimonial";
 import { cn } from "@/shared/lib/cn";
@@ -35,7 +36,7 @@ export function TestimonialsSection() {
                       index === activeIndex ? "ring-2 ring-white ring-offset-2 ring-offset-black" : "opacity-60 hover:opacity-100",
                     )}
                   >
-                    <img alt="" src={testimonial.avatar} className="size-full object-cover" />
+                    <Image alt="" fill sizes="48px" src={testimonial.avatar} className="object-cover" />
                   </button>
                 ))}
               </div>

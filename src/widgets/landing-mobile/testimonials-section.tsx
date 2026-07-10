@@ -12,7 +12,7 @@ export function TestimonialsSectionMobile() {
           <div className="flex items-center gap-[0.625rem]">
             {TESTIMONIALS.map(testimonial => (
               <div key={testimonial.id} className="relative size-9 shrink-0 overflow-hidden rounded-full">
-                <Image alt="" fill src={testimonial.avatar} className="object-cover" />
+                <Image alt="" fill sizes="36px" src={testimonial.avatar} className="object-cover" />
               </div>
             ))}
           </div>
@@ -30,7 +30,7 @@ export function TestimonialsSectionMobile() {
                 </p>
                 <div className="flex w-full items-center gap-4">
                   <div className="relative size-9 shrink-0 overflow-hidden rounded-full">
-                    <Image alt="" fill src={testimonial.avatar} className="object-cover" />
+                    <Image alt="" fill sizes="36px" src={testimonial.avatar} className="object-cover" />
                   </div>
                   <div className="flex flex-1 flex-col items-start justify-center gap-[0.125rem]">
                     <p className="font-(family-name:--font-manrope-sans) text-[1rem] tracking-[-0.0625rem] whitespace-nowrap text-white">
