@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TELEGRAM_CONTACT_URL } from "@/shared/config/social-links";
 import { Button } from "@/shared/ui/button";
 import { HamburgerIcon } from "@/shared/ui/icons/boxicons";
 import { NavMenu } from "@/shared/ui/nav-menu";
@@ -32,7 +33,12 @@ export function Header() {
         />
       </div>
 
-      <Button variant="primary" className="justify-self-end" render={<a href="#contact" />} nativeButton={false}>
+      <Button
+        variant="primary"
+        className="justify-self-end"
+        render={<a href={TELEGRAM_CONTACT_URL} target="_blank" rel="noopener noreferrer" />}
+        nativeButton={false}
+      >
         Написать
       </Button>
     </header>

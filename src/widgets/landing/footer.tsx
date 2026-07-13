@@ -3,12 +3,19 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
+import { SOCIAL_LINKS } from "@/shared/config/social-links";
 
 const FOOTER_NAV_ITEMS = [
   { label: "Портфолио", slug: "projects" },
   { label: "Этапы работы", slug: "process" },
   { label: "Услуги", slug: "services" },
   { label: "Отзывы", slug: "testimonials" },
+];
+
+const SOCIAL_ICONS = [
+  { icon: "boxicons-logo.svg", href: SOCIAL_LINKS.instagram, label: "Instagram" },
+  { icon: "boxicons-logo1.svg", href: SOCIAL_LINKS.telegram, label: "Telegram" },
+  { icon: "boxicons-logo2.svg", href: SOCIAL_LINKS.linkedin, label: "LinkedIn" },
 ];
 
 export function Footer() {
@@ -86,12 +93,19 @@ export function Footer() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="absolute top-[8.875rem] left-1/2 flex -translate-x-1/2 items-center justify-center gap-[0.41125rem] rounded-[1.645rem] border-[0.06169rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.41125rem] backdrop-blur-[0.87906rem]"
         >
-          {["boxicons-logo.svg", "boxicons-logo1.svg", "boxicons-logo2.svg"].map(icon => (
-            <div key={icon} className="relative size-[4.1125rem] shrink-0 overflow-clip rounded-[1.23375rem] bg-white">
+          {SOCIAL_ICONS.map(social => (
+            <a
+              key={social.icon}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              className="group relative size-[4.1125rem] shrink-0 cursor-pointer overflow-clip rounded-[1.23375rem] bg-white outline-none transition-colors hover:bg-(--dd-blue-600) focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
+            >
               <div className="absolute top-1/2 left-1/2 size-9 -translate-x-1/2 -translate-y-1/2">
-                <Image alt="" fill sizes="36px" className="object-cover" src={`/landing/desktop-6/${icon}`} />
+                <Image alt="" fill sizes="36px" className="object-cover transition-[filter] group-hover:brightness-0 group-hover:invert" src={`/landing/desktop-6/${social.icon}`} />
               </div>
-            </div>
+            </a>
           ))}
         </motion.div>
 
@@ -141,7 +155,7 @@ export function Footer() {
                 <a
                   key={item.slug}
                   href={`#${item.slug}`}
-                  className="pointer-events-auto cursor-pointer rounded-[0.25rem] outline-none transition-colors hover:text-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
+                  className="pointer-events-auto cursor-pointer rounded-[0.25rem] outline-none transition-colors hover:text-(--dd-blue-600) focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
                 >
                   {item.label}
                 </a>

@@ -1,9 +1,18 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
 import { TESTIMONIALS } from "@/entities/testimonial";
 
 export function TestimonialsSectionMobile() {
+  const cardsRef = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const scrollToCard = (id: string) => {
+    cardsRef.current[id]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  };
+
   return (
-    <section id="testimonials-mobile" className="relative px-3 py-10">
+    <section id="testimonials-mobile" className="relative px-3 pt-3 pb-10">
       <div className="relative mx-auto min-h-[26rem] w-[21rem] overflow-clip rounded-[1.5rem] bg-black py-8">
         <div className="flex flex-col items-center gap-5 px-6 text-center">
           <p className="w-[18rem] font-(family-name:--font-inter-sans) text-[2rem] leading-none font-medium tracking-[-0.04rem] text-white [word-break:break-word]">
@@ -11,9 +20,15 @@ export function TestimonialsSectionMobile() {
           </p>
           <div className="flex items-center gap-[0.625rem]">
             {TESTIMONIALS.map(testimonial => (
-              <div key={testimonial.id} className="relative size-9 shrink-0 overflow-hidden rounded-full">
+              <button
+                key={testimonial.id}
+                type="button"
+                onClick={() => scrollToCard(testimonial.id)}
+                aria-label={`Отзыв от ${testimonial.name}`}
+                className="relative size-9 shrink-0 cursor-pointer overflow-hidden rounded-full outline-none transition-transform hover:scale-110 focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
+              >
                 <Image alt="" fill sizes="36px" src={testimonial.avatar} className="object-cover" />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -22,6 +37,7 @@ export function TestimonialsSectionMobile() {
           {TESTIMONIALS.map(testimonial => (
             <div
               key={testimonial.id}
+              ref={(el) => { cardsRef.current[testimonial.id] = el; }}
               className="flex h-[12.5rem] w-[18.75rem] shrink-0 snap-center flex-col items-start justify-center rounded-[1.5rem] bg-(--dd-gray-850) p-6"
             >
               <div className="flex w-full flex-1 flex-col items-start justify-between">

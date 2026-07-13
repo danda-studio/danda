@@ -17,7 +17,7 @@ export function HeroMobile() {
         <Image alt="" fill priority fetchPriority="high" sizes="976px" className="object-cover" src="/landing/desktop-6/dots.svg" />
       </div>
 
-      <div className="relative mx-auto flex w-[22.5rem] max-w-full flex-col items-center gap-3 px-3 pt-[6.5rem] text-center">
+      <div className="relative mx-auto flex w-[22.5rem] max-w-full flex-col items-center gap-3 px-3 pt-[2.75rem] text-center">
         <p className="font-(family-name:--font-manrope-sans) text-[1rem] font-medium text-black">
           Студия разработки полного цикла
         </p>
@@ -28,7 +28,7 @@ export function HeroMobile() {
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[11.6875rem] left-[0.875rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+          className="absolute top-[7.9375rem] left-[0.875rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
         >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldFolder className="size-2" />
@@ -40,7 +40,7 @@ export function HeroMobile() {
         <motion.div
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-          className="absolute top-[14.75rem] right-[1rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
+          className="absolute top-[11rem] right-[1rem] flex items-center justify-center gap-[0.125rem] rounded-[0.5rem] border-[0.0375rem] border-(--dd-border-subtle) bg-(--dd-glass-tint) p-[0.125rem] backdrop-blur-[0.534rem]"
         >
           <div className={glassIconWrapperClassName}>
             <VuesaxBoldDocumentCode className="size-2" />

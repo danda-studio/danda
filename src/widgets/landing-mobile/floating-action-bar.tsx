@@ -1,3 +1,4 @@
+import { TELEGRAM_CONTACT_URL } from "@/shared/config/social-links";
 import { HamburgerIcon } from "@/shared/ui/icons/boxicons";
 import { NavMenu } from "@/shared/ui/nav-menu";
 
@@ -20,7 +21,9 @@ export function FloatingActionBarMobile() {
       />
 
       <a
-        href="#contact-mobile"
+        href={TELEGRAM_CONTACT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-flex h-11 cursor-pointer items-center justify-center rounded-[1rem] bg-brand px-5 py-4 font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.025rem] text-white shadow-lg outline-none transition-colors hover:bg-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)] focus-visible:ring-offset-[0.125rem]"
       >
         Написать

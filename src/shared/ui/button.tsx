@@ -20,8 +20,8 @@ export interface ButtonProps extends Omit<BaseButtonProps, "className"> {
 
 const variantClassName: Record<Variant, string> = {
   primary: "bg-brand text-white hover:bg-black",
-  dark: "bg-black text-white",
-  light: "bg-[var(--dd-gray-200)] text-black",
+  dark: "bg-black text-white hover:bg-(--dd-gray-700)",
+  light: "bg-[var(--dd-gray-200)] text-black hover:bg-(--dd-gray-50)",
 };
 
 export function Button({ variant = "primary", leadingIcon, trailingIcon, className, children, loading = false, disabled, ...props }: ButtonProps) {

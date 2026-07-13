@@ -103,12 +103,12 @@ export function ProjectsSectionMobile() {
   const card2 = useCardMotion(step, 2);
 
   return (
-    <section id="projects-mobile" className="relative px-3 py-10">
+    <section id="projects-mobile" className="relative px-3 pt-10 pb-5">
       <h2 className="w-[13.4375rem] font-(family-name:--font-manrope-sans) text-[2rem] leading-none font-semibold tracking-[-0.06rem] whitespace-nowrap text-black [word-break:break-word]">
         Наши проекты
       </h2>
 
-      <div ref={trackRef} className="relative mx-auto mt-14 h-[226.5rem] w-[21rem]">
+      <div ref={trackRef} className="relative mx-auto h-[226.5rem] w-[21rem] mt-[calc(2rem+(100dvh-42.5rem)/-2)] mb-[calc((100dvh-42.5rem)/-2)]">
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[42.5rem] w-full">
             <StackCard

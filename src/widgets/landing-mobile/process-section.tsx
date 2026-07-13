@@ -3,6 +3,8 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/shared/lib/cn";
+import { Button } from "@/shared/ui/button";
+import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
 import { VuesaxBoldCheck, VuesaxBoldDocumentCode, VuesaxBoldFolder, VuesaxBoldLampOn, VuesaxBoldPath, VuesaxBoldProfile2User } from "@/shared/ui/icons/vuesax";
 
 const glassIconWrapperClassName = "relative flex size-[1.5rem] shrink-0 items-center justify-center overflow-clip rounded-[0.375rem] bg-white";
@@ -83,10 +85,19 @@ export function ProcessSectionMobile() {
             <VuesaxBoldLampOn className="size-2" />
           </div>
         </motion.div>
-        <div className="absolute top-[15.4375rem] left-[1.6875rem] flex items-center justify-center rounded-[1.8281rem] bg-brand px-[0.5rem] py-[0.25rem] backdrop-blur-[0.8203rem]">
-          <p className="font-(family-name:--font-manrope-sans) text-[0.75rem] font-medium tracking-[-0.0225rem] whitespace-nowrap text-white">
-            Developer
-          </p>
+        <div className="absolute top-[15.4375rem] left-[1.6875rem] h-[2rem] w-[5.3125rem]">
+          <div className="absolute top-[0.625rem] left-[0.3125rem] flex items-center justify-center rounded-[1.8281rem] bg-brand px-[0.5rem] py-[0.25rem] backdrop-blur-[0.8203rem]">
+            <p className="font-(family-name:--font-manrope-sans) text-[0.75rem] font-medium tracking-[-0.0225rem] whitespace-nowrap text-white">
+              Developer
+            </p>
+          </div>
+          <div className="absolute top-0 left-[4.27875rem] flex h-[1.21781rem] w-[1.27063rem] items-center justify-center">
+            <div className="rotate-[71deg] flex-none">
+              <div className="relative h-[1.02144rem] w-[0.93631rem]">
+                <Image alt="" fill sizes="20px" className="object-contain" src="/landing/mobile/developer-badge-arrow.svg" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -109,6 +120,18 @@ export function ProcessSectionMobile() {
             {stepIndex < STEPS.length - 1 && <Divider />}
           </div>
         ))}
+      </div>
+
+      <div className="mx-auto mt-8 flex w-[21rem] justify-center">
+        <Button
+          variant="primary"
+          className="rounded-[1rem] py-1 pr-5 pl-1 text-[1rem]"
+          leadingIcon={<BoxiconsSend className="relative size-6 -rotate-90" />}
+          render={<a href="#contact-mobile" />}
+          nativeButton={false}
+        >
+          Бесплатный аудит
+        </Button>
       </div>
     </section>
   );
