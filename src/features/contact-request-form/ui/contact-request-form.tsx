@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "@tanstack/react-form";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/shared/ui/button";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
@@ -19,8 +20,8 @@ function SelectablePill({ label, selected, onSelect }: { label: string; selected
     <button
       type="button"
       onClick={onSelect}
-      className={`flex h-10 shrink-0 cursor-pointer items-center justify-center overflow-clip rounded-[2.5rem] px-[1.25rem] font-[family-name:var(--font-manrope-sans)] text-[1rem] font-medium tracking-[-0.0625rem] ${
-        selected ? "bg-black text-white" : "bg-(--color-gray-150) text-black"
+      className={`flex h-10 shrink-0 cursor-pointer items-center justify-center overflow-clip rounded-[2.5rem] px-5 font-(family-name:--font-manrope-sans) text-[1rem] font-medium tracking-[-0.0625rem] ${
+        selected ? "bg-black text-white" : "bg-(--dd-gray-150) text-black"
       }`}
     >
       {label}
@@ -38,6 +39,7 @@ export function ContactRequestForm() {
       budget: BUDGET_OPTIONS[0] as (typeof BUDGET_OPTIONS)[number],
       contactMethod: CONTACT_METHOD_OPTIONS[0] as (typeof CONTACT_METHOD_OPTIONS)[number],
       contact: "",
+      attachment: null as File | null,
     },
     validators: {
       onSubmit: contactRequestSchema,
@@ -51,7 +53,7 @@ export function ContactRequestForm() {
 
   return (
     <form
-      className="absolute top-[316.375rem] left-1/2 flex w-143 -translate-x-1/2 flex-col items-start gap-6"
+      className="mx-auto flex w-143 max-w-full flex-col items-start gap-6"
       onSubmit={(event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -83,10 +85,39 @@ export function ContactRequestForm() {
             />
           )}
         </form.Field>
-        <div className="flex h-8 items-center gap-1.5 rounded-[1.875rem] bg-brand px-[0.75rem] py-1.75 text-white">
-          <img alt="" src="/landing/desktop-6/boxicons1.svg" className="size-4" />
-          <span className="font-(family-name:--font-manrope-sans) text-[0.875rem] font-medium leading-[1.3]">Прикрепить файл</span>
-        </div>
+        <form.Field name="attachment">
+          {field => (
+            <div className="flex flex-col items-start gap-1.5">
+              <label className="flex h-8 cursor-pointer items-center gap-1.5 rounded-[1.875rem] bg-brand px-3 py-1.75 text-white outline-none transition-colors hover:bg-black focus-within:ring-[0.125rem] focus-within:ring-[rgba(0,96,253,0.6)]">
+                <input
+                  type="file"
+                  className="sr-only"
+                  onChange={e => field.handleChange(e.target.files?.[0] ?? null)}
+                />
+                <span className="relative size-4 shrink-0">
+                  <Image alt="" fill sizes="16px" src="/landing/desktop-6/boxicons1.svg" />
+                </span>
+                <span className="font-(family-name:--font-manrope-sans) text-[0.875rem] font-medium leading-[1.3]">
+                  {field.state.value ? field.state.value.name : "Прикрепить файл"}
+                </span>
+              </label>
+              {field.state.value && (
+                <button
+                  type="button"
+                  onClick={() => field.handleChange(null)}
+                  className="cursor-pointer rounded-[0.25rem] font-(family-name:--font-manrope-sans) text-[0.75rem] font-medium text-(--dd-gray-400) underline outline-none transition-colors hover:text-black focus-visible:ring-[0.125rem] focus-visible:ring-[rgba(0,96,253,0.6)]"
+                >
+                  Убрать файл
+                </button>
+              )}
+              {formatFieldErrors(field.state.meta.errors).map(error => (
+                <p key={error} className="font-(family-name:--font-manrope-sans) text-[0.75rem] text-red-500">
+                  {error}
+                </p>
+              ))}
+            </div>
+          )}
+        </form.Field>
       </div>
 
       <div className="flex w-full flex-col items-start gap-4">
@@ -137,14 +168,19 @@ export function ContactRequestForm() {
         </form.Field>
       </div>
 
-      <Button
-        type="submit"
-        variant="primary"
-        className="w-full justify-between"
-        leadingIcon={<BoxiconsSend className="relative size-7 -rotate-90" />}
-      >
-        {submitted ? "Отправлено" : "Бесплатный аудит"}
-      </Button>
+      <form.Subscribe selector={state => state.isSubmitting}>
+        {isSubmitting => (
+          <Button
+            type="submit"
+            variant="primary"
+            className="w-full"
+            loading={isSubmitting}
+            leadingIcon={<BoxiconsSend className="relative size-7 -rotate-90" />}
+          >
+            {submitted ? "Отправлено" : "Бесплатный аудит"}
+          </Button>
+        )}
+      </form.Subscribe>
     </form>
   );
 }

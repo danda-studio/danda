@@ -15,10 +15,10 @@ export interface TextFieldProps {
 
 export function TextField({ errors, className, ...props }: TextFieldProps) {
   return (
-    <Field.Root className="flex w-full flex-col gap-[0.5rem]">
+    <Field.Root className="flex w-full flex-col gap-2">
       <Field.Control
         className={cn(
-          "h-[3.25rem] w-full rounded-[1.25rem] bg-[var(--color-gray-150)] px-[1rem] py-[0.75rem] text-[1rem] font-medium text-black outline-none placeholder:text-muted",
+          "h-13 w-full rounded-[1.25rem] bg-[var(--dd-gray-150)] px-4 py-3 text-[1rem] font-medium text-black outline-none placeholder:text-muted",
           className,
         )}
         {...props}

@@ -16,11 +16,11 @@ export interface TextareaFieldProps {
 
 export function TextareaField({ errors, className, rows = 3, ...props }: TextareaFieldProps) {
   return (
-    <Field.Root className="flex w-full flex-col gap-[0.5rem]">
+    <Field.Root className="flex w-full flex-col gap-2">
       <Field.Control
         render={<textarea rows={rows} />}
         className={cn(
-          "h-[6rem] w-full resize-none rounded-[1.25rem] bg-[var(--color-gray-150)] px-[1rem] py-[0.75rem] text-[1rem] font-medium text-black outline-none placeholder:text-muted",
+          "h-24 w-full resize-none rounded-[1.25rem] bg-[var(--dd-gray-150)] px-4 py-3 text-[1rem] font-medium text-black outline-none placeholder:text-muted",
           className,
         )}
         {...(props as Record<string, unknown>)}
