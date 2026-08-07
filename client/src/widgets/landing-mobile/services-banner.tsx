@@ -124,7 +124,7 @@ export function ServicesBannerMobile() {
 
   return (
     <section id="services-mobile" className="relative px-3 pt-5 pb-0">
-      <div ref={trackRef} className="relative mx-auto h-[160rem] w-[21rem] mt-[calc((100dvh-45rem)/-2)] mb-[calc((100dvh-45rem)/-2)]">
+      <div ref={trackRef} className="relative mx-auto h-[160rem] w-[21rem]">
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[45rem] w-full overflow-clip rounded-[1.5rem] bg-brand">
             <div className="pointer-events-none absolute top-1/2 left-1/2 h-[30.625rem] w-[49.6875rem] -translate-x-1/2 -translate-y-[calc(50%+7.75rem)]">

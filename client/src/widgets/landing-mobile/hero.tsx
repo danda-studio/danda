@@ -57,7 +57,7 @@ export function HeroMobile() {
         </motion.div>
       </div>
 
-      <div className="relative mx-auto mt-[1.125rem] w-[22.5rem] max-w-full">
+      <div className="relative z-10 mx-auto -mt-[4rem] w-[22.5rem] max-w-full">
         <div className="relative mx-auto size-[23.25rem] max-w-full">
           <Image
             alt=""
@@ -70,9 +70,10 @@ export function HeroMobile() {
             className="pointer-events-none size-full object-cover"
             src="/landing/desktop-6/chat-gpt-image1820260242201.png"
           />
+          <div className="pointer-events-none absolute inset-x-0 -bottom-px h-[13rem] bg-gradient-to-b from-transparent via-white/90 via-65% to-white" />
         </div>
 
-        <p className="mx-auto mt-[1.25rem] w-[17.375rem] text-center font-(family-name:--font-manrope-sans) font-medium text-(--dd-gray-300)">
+        <p className="relative z-20 mx-auto -mt-[2.5rem] w-[17.375rem] text-center font-(family-name:--font-manrope-sans) font-medium text-(--dd-gray-300)">
           <span className="text-[1rem] leading-[1.2]">Вы получаете понятное цифровое решение. </span>
           <span className="text-[1rem] leading-[1.2] text-black">Для бизнеса, который ценит ясность и стабильность</span>
         </p>

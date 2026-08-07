@@ -108,7 +108,7 @@ export function ProjectsSectionMobile() {
         Наши проекты
       </h2>
 
-      <div ref={trackRef} className="relative mx-auto h-[226.5rem] w-[21rem] mt-[calc(2rem+(100dvh-42.5rem)/-2)] mb-[calc((100dvh-42.5rem)/-2)]">
+      <div ref={trackRef} className="relative mx-auto mt-8 h-[226.5rem] w-[21rem]">
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[42.5rem] w-full">
             <StackCard
