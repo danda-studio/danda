@@ -16,7 +16,7 @@ export function TestimonialsSectionMobile() {
 
   return (
     <section id="testimonials-mobile" className="relative px-3 pt-3 pb-10">
-      <div className="relative mx-auto min-h-[26rem] w-[21rem] overflow-clip rounded-[1.5rem] bg-black py-8">
+      <div className="relative mx-auto min-h-[26rem] w-[21rem] overflow-hidden rounded-[1.5rem] bg-black py-8">
         <div className="flex flex-col items-center gap-5 px-6 text-center">
           <p className="w-[18rem] font-(family-name:--font-inter-sans) text-[2rem] leading-none font-medium tracking-[-0.04rem] text-white [word-break:break-word]">
             Отзывы наших клиентов
@@ -36,13 +36,14 @@ export function TestimonialsSectionMobile() {
           </div>
         </div>
 
-        <div ref={scrollerRef} className="mt-[4.75rem] flex cursor-grab snap-x snap-mandatory items-start gap-2 overflow-x-auto px-3 pb-1 [scrollbar-width:none] active:cursor-grabbing touch-pan-x">
-          {TESTIMONIALS.map(testimonial => (
-            <div
-              key={testimonial.id}
-              ref={(el) => { cardsRef.current[testimonial.id] = el; }}
-              className="flex h-[12.5rem] w-[18.75rem] shrink-0 snap-center flex-col items-start justify-center rounded-[1.5rem] bg-(--dd-gray-850) p-6"
-            >
+        <div className="mt-[4.75rem] overflow-hidden">
+          <div ref={scrollerRef} className="flex cursor-grab snap-x snap-mandatory items-start gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] active:cursor-grabbing touch-pan-x">
+            {TESTIMONIALS.map(testimonial => (
+              <div
+                key={testimonial.id}
+                ref={(el) => { cardsRef.current[testimonial.id] = el; }}
+                className="flex h-[12.5rem] w-[18rem] shrink-0 snap-center flex-col items-start justify-center rounded-[1.5rem] bg-(--dd-gray-850) p-6"
+              >
               <div className="flex w-full flex-1 flex-col items-start justify-between">
                 <p className="line-clamp-2 w-full font-(family-name:--font-manrope-sans) text-[1rem] leading-[1.2] font-medium text-white">
                   {testimonial.quote}
@@ -63,6 +64,7 @@ export function TestimonialsSectionMobile() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>
