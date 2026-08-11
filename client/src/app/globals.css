@@ -56,14 +56,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
   /* Reserves the scrollbar's width up front so 1vw-based fluid sizing (below) is computed
      against the actually-visible viewport, not the full window width. Without this, content

@@ -4,12 +4,12 @@ import { NavMenu } from "@/shared/ui/nav-menu";
 
 export function FloatingActionBarMobile() {
   return (
-    <div className="fixed inset-x-0 bottom-6 z-30 flex items-center justify-center gap-3">
+    <div className="fixed inset-x-0 bottom-[calc(1.5rem+env(safe-area-inset-bottom))] z-30 flex items-center justify-center gap-3">
       <NavMenu
         mode="click"
         align="center"
         panelAnchor="bottom"
-        panelPositionClassName="fixed bottom-6 left-1/2 z-50 -translate-x-1/2"
+        panelPositionClassName="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-1/2 z-50 -translate-x-1/2"
         idSuffix="-mobile"
         closedClassName="inline-flex h-11 cursor-pointer items-center justify-center gap-[0.625rem] whitespace-nowrap rounded-[1rem] px-5 py-4 text-[1rem] font-medium tracking-[-0.025rem] text-black shadow-lg"
         closedContent={(

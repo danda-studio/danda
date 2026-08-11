@@ -1,106 +1,30 @@
 "use client";
 
-import type { MotionValue } from "motion/react";
-import type { ReactNode } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
-import { cn } from "@/shared/lib/cn";
 import { Tag } from "@/shared/ui/tag";
 
-const PEEK_STEP = 1; // rem the not-yet-current cards peek out, per step behind
-const PEEK_SCALE_STEP = 0.08; // the not-yet-current cards shrink slightly, per step behind
-const EXIT_DISTANCE = 50; // rem an already-current card travels up when it's removed
-const DWELL = 0.15; // half-width (in step units) a card holds fully in place at its peak
-
-function useCardMotion(step: MotionValue<number>, index: number) {
-  const y = useTransform(step, (v) => {
-    const distance = v - index;
-    if (Math.abs(distance) <= DWELL)
-      return "0rem";
-    return distance < 0 ? `${PEEK_STEP * (distance + DWELL)}rem` : `${-EXIT_DISTANCE * Math.min(distance - DWELL, 1)}rem`;
-  });
-  const scaleX = useTransform(step, (v) => {
-    const distance = v - index;
-    if (Math.abs(distance) <= DWELL)
-      return 1;
-    return distance < 0 ? 1 + PEEK_SCALE_STEP * (distance + DWELL) : 1;
-  });
-  return { y, scaleX };
-}
-
-// Static bottom scrim so the card's white text stays legible over busy background art —
-// present at all times regardless of scroll position, matching Figma where all 3 project
-// cards have this same soft blur baked into the bottom of their background image.
-function BottomBlurScrim() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0 backdrop-blur-[1.875rem]"
-      style={{
-        maskImage: "linear-gradient(to bottom, transparent 40%, black 80%)",
-        WebkitMaskImage: "linear-gradient(to bottom, transparent 40%, black 80%)",
-      }}
-    />
-  );
-}
-
-interface StackCardProps {
-  background: ReactNode;
-  name: string;
-  description: string;
-  tags: string[];
-  current: string;
-  y: MotionValue<string> | string;
-  scaleX: MotionValue<number> | number;
-  zClassName: string;
-}
-
-function StackCard({ background, name, description, tags, current, y, scaleX, zClassName }: StackCardProps) {
-  return (
-    <motion.div className={cn("absolute inset-0 origin-top overflow-clip rounded-[1.5rem] bg-black", zClassName)} style={{ y, scaleX }}>
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        {background}
-      </div>
-      <BottomBlurScrim />
-      <div className="absolute top-[25.5rem] left-[1.5rem] flex w-[18.5rem] flex-col items-start gap-[1.25rem]">
-        <div className="flex flex-col items-start gap-[0.75rem] text-white [word-break:break-word]">
-          <p className="font-(family-name:--font-manrope-sans) text-[1.75rem] leading-none font-semibold tracking-[-0.0525rem] whitespace-nowrap">
-            {name}
-          </p>
-          <p className="h-[3.25rem] w-[15.5625rem] font-(family-name:--font-manrope-sans) text-[0.875rem] leading-[1.2] font-medium opacity-76">
-            {description}
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center gap-[0.5rem]">
-          {tags.map(tag => (
-            <Tag key={tag} className="rounded-[1rem] border-[0.0438rem] px-[1rem] py-[0.75rem] text-[0.875rem] tracking-[-0.0263rem]">
-              {tag}
-            </Tag>
-          ))}
-        </div>
-      </div>
-      <ProjectCounter
-        current={current}
-        total="03"
-        className="absolute top-[1.5rem] left-[1.5rem] gap-[0.25rem]"
-        numberClassName="text-[1.5rem] tracking-[-0.045rem]"
-        totalClassName="text-[1rem] tracking-[-0.03rem]"
-      />
-    </motion.div>
-  );
-}
+const PROJECT_IMAGES: Record<string, string> = {
+  selix: "/landing/mobile/selix-card.png",
+  "dr-smile": "/landing/mobile/drsmile-card.png",
+  "food-delivery": "/landing/mobile/fooddelivery-card.png",
+};
 
 export function ProjectsSectionMobile() {
-  const [selix, drSmile, foodDelivery] = [...PROJECTS].reverse();
-  const trackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
-  const step = useTransform(scrollYProgress, [0, 1], [0, PROJECTS.length - 1]);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const projects = [...PROJECTS].reverse();
 
-  const card0 = useCardMotion(step, 0);
-  const card1 = useCardMotion(step, 1);
-  const card2 = useCardMotion(step, 2);
+  const handleScroll = () => {
+    const el = scrollerRef.current;
+    if (!el)
+      return;
+    const cardWidth = el.firstElementChild?.clientWidth ?? 1;
+    const gap = 12;
+    const index = Math.round(el.scrollLeft / (cardWidth + gap));
+    setActiveIndex(Math.min(Math.max(index, 0), projects.length - 1));
+  };
 
   return (
     <section id="projects-mobile" className="relative px-3 pt-10 pb-5">
@@ -108,41 +32,74 @@ export function ProjectsSectionMobile() {
         Наши проекты
       </h2>
 
-      <div ref={trackRef} className="relative mx-auto mt-8 h-[226.5rem] w-[21rem]">
-        <div className="sticky top-0 flex h-dvh items-center">
-          <div className="relative h-[42.5rem] w-full">
-            <StackCard
-              background={<Image alt="" fill quality={55} sizes="410px" className="object-cover" src="/landing/mobile/selix-card.png" />}
-              name={selix.name}
-              description={selix.description}
-              tags={selix.tags}
-              current="03"
-              y={card0.y}
-              scaleX={card0.scaleX}
-              zClassName="z-30"
+      <div
+        ref={scrollerRef}
+        onScroll={handleScroll}
+        className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [scrollbar-width:none]"
+      >
+        {projects.map((project, index) => (
+          <article
+            key={project.id}
+            className="relative h-[34rem] w-[21rem] shrink-0 snap-center overflow-clip rounded-[1.5rem] bg-black"
+          >
+            <Image
+              alt=""
+              fill
+              quality={55}
+              sizes="336px"
+              className="object-cover"
+              src={PROJECT_IMAGES[project.id]}
             />
-            <StackCard
-              background={<Image alt="" fill quality={55} sizes="410px" className="object-cover" src="/landing/mobile/drsmile-card.png" />}
-              name={drSmile.name}
-              description={drSmile.description}
-              tags={drSmile.tags}
-              current="02"
-              y={card1.y}
-              scaleX={card1.scaleX}
-              zClassName="z-20"
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 backdrop-blur-[1.875rem]"
+              style={{
+                maskImage: "linear-gradient(to bottom, transparent 40%, black 80%)",
+                WebkitMaskImage: "linear-gradient(to bottom, transparent 40%, black 80%)",
+              }}
             />
-            <StackCard
-              background={<Image alt="" fill quality={55} sizes="410px" className="object-cover" src="/landing/mobile/fooddelivery-card.png" />}
-              name={foodDelivery.name}
-              description={foodDelivery.description}
-              tags={foodDelivery.tags}
-              current="01"
-              y={card2.y}
-              scaleX={card2.scaleX}
-              zClassName="z-10"
+            <ProjectCounter
+              current={String(index + 1).padStart(2, "0")}
+              total={String(projects.length).padStart(2, "0")}
+              className="absolute top-[1.5rem] left-[1.5rem] gap-[0.25rem]"
+              numberClassName="text-[1.5rem] tracking-[-0.045rem]"
+              totalClassName="text-[1rem] tracking-[-0.03rem]"
             />
-          </div>
-        </div>
+            <div className="absolute right-0 bottom-0 left-0 flex flex-col items-start gap-[1.25rem] p-6">
+              <div className="flex flex-col items-start gap-[0.75rem] text-white [word-break:break-word]">
+                <p className="font-(family-name:--font-manrope-sans) text-[1.75rem] leading-none font-semibold tracking-[-0.0525rem] whitespace-nowrap">
+                  {project.name}
+                </p>
+                <p className="font-(family-name:--font-manrope-sans) text-[0.875rem] leading-[1.2] font-medium opacity-76">
+                  {project.description}
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-[0.5rem]">
+                {project.tags.map(tag => (
+                  <Tag key={tag} className="rounded-[1rem] border-[0.0438rem] px-[1rem] py-[0.75rem] text-[0.875rem] tracking-[-0.0263rem]">
+                    {tag}
+                  </Tag>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-4 flex items-center justify-center gap-2">
+        {projects.map((project, index) => (
+          <button
+            key={project.id}
+            type="button"
+            aria-label={`Проект ${project.name}`}
+            onClick={() => {
+              const el = scrollerRef.current;
+              const card = el?.children[index] as HTMLElement | undefined;
+              card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+            }}
+            className={`h-1.5 rounded-full transition-all ${index === activeIndex ? "w-6 bg-brand" : "w-1.5 bg-(--dd-gray-300)"}`}
+          />
+        ))}
       </div>
     </section>
   );

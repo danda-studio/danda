@@ -16,7 +16,7 @@ const SOCIAL_ICONS = [
 
 export function FooterMobile() {
   return (
-    <footer className="relative overflow-hidden bg-white pt-16 pb-8">
+    <footer className="relative overflow-hidden bg-white pt-16 pb-10">
       <div className="relative mx-auto h-[38.8125rem] w-[21rem]">
         <div className="pointer-events-none absolute top-0 left-1/2 size-[27.25rem] -translate-x-1/2">
           <Image

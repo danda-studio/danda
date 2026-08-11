@@ -30,8 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ru"
       className={`${manrope.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
+      style={{ colorScheme: "light" }}
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>

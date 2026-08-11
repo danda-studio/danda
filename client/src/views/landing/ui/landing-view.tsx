@@ -32,7 +32,7 @@ export function LandingView() {
         </div>
       </div>
 
-      <div className="md:hidden">
+      <div className="md:hidden pb-[calc(7rem+env(safe-area-inset-bottom))]">
         <HeaderMobile />
         <HeroMobile />
         <ProjectsSectionMobile />
