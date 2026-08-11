@@ -190,16 +190,7 @@ export function ProjectsSection() {
         </p>
       </div>
 
-      {/* Height is rem (not vh) so the scroll distance stays proportional to the cards'
-          own rem-based size as the fluid root font-size rescales them across viewport
-          widths — a vh-based track wouldn't shrink alongside a shrinking card, leaving a
-          growing dead scroll zone with nothing to look at below the pinned card. */}
       <div ref={trackRef} className="relative mx-auto mt-[5.5rem] h-[253.125rem] w-[87rem]">
-        {/* A full-viewport-height sticky wrapper that flex-centers the fixed-size card box,
-            instead of a percentage `top`/`translate` trick on the sticky element itself —
-            percentage insets on `position: sticky` resolve against the containing block
-            (the very tall track), not the viewport, so they don't reliably center and can
-            leave the card pinned near the top with a large gap below it. */}
         <div className="sticky top-0 flex h-dvh items-center">
           <div className="relative h-[47.5rem] w-full">
             <StackCard background={<SelixBackground />} name={selix.name} description={selix.description} tags={selix.tags} current="03" y={card0.y} scaleX={card0.scaleX} zClassName="z-30" step={step} totalProjects={PROJECTS.length} />

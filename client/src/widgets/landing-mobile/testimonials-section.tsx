@@ -3,9 +3,12 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { TESTIMONIALS } from "@/entities/testimonial";
+import { useDragScroll } from "@/shared/lib/use-drag-scroll";
 
 export function TestimonialsSectionMobile() {
   const cardsRef = useRef<Record<string, HTMLDivElement | null>>({});
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  useDragScroll(scrollerRef);
 
   const scrollToCard = (id: string) => {
     cardsRef.current[id]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
@@ -33,7 +36,7 @@ export function TestimonialsSectionMobile() {
           </div>
         </div>
 
-        <div className="mt-[4.75rem] flex snap-x snap-mandatory items-start gap-2 overflow-x-auto px-3 pb-1 [scrollbar-width:none]">
+        <div ref={scrollerRef} className="mt-[4.75rem] flex cursor-grab snap-x snap-mandatory items-start gap-2 overflow-x-auto px-3 pb-1 [scrollbar-width:none] active:cursor-grabbing touch-pan-x">
           {TESTIMONIALS.map(testimonial => (
             <div
               key={testimonial.id}

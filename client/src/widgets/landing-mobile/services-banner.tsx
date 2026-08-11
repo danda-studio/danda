@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { SERVICES } from "@/entities/service";
+import { useDragScroll } from "@/shared/lib/use-drag-scroll";
 import { Button } from "@/shared/ui/button";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
 import { Tag } from "@/shared/ui/tag";
@@ -17,6 +18,7 @@ const SERVICE_IMAGES = [
 export function ServicesBannerMobile() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  useDragScroll(scrollerRef);
 
   const handleScroll = () => {
     const el = scrollerRef.current;
@@ -33,25 +35,25 @@ export function ServicesBannerMobile() {
       <div
         ref={scrollerRef}
         onScroll={handleScroll}
-        className="flex snap-x snap-mandatory gap-3 overflow-x-auto [scrollbar-width:none]"
+        className="flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto [scrollbar-width:none] active:cursor-grabbing touch-pan-x"
       >
         {SERVICES.map((service, index) => (
           <article
             key={service.title}
-            className="relative flex h-[34rem] w-[21rem] shrink-0 snap-center flex-col overflow-clip rounded-[1.5rem] bg-brand px-4 pt-6 pb-6"
+            className="relative flex w-[21rem] shrink-0 snap-center flex-col overflow-clip rounded-[1.5rem] bg-brand px-4 pt-6 pb-8"
           >
             <div className="pointer-events-none absolute inset-0">
               <Image alt="" fill sizes="336px" className="object-cover opacity-40" src="/landing/mobile/services-dots.svg" />
             </div>
 
-            <div className="relative mx-auto mb-5 h-[14rem] w-[14rem] shrink-0 overflow-clip rounded-[1rem] bg-white shadow-[0_0.75rem_2rem_rgba(0,23,61,0.18)]">
+            <div className="relative z-10 mx-auto mb-6 h-[14rem] w-[14rem] shrink-0 overflow-clip rounded-[1rem] bg-white shadow-[0_0.75rem_2rem_rgba(0,23,61,0.18)]">
               <Image alt="" fill quality={55} sizes="224px" className="object-cover" src={SERVICE_IMAGES[index]} />
               <p className="absolute right-4 bottom-4 left-4 font-(family-name:--font-manrope-sans) text-[1.125rem] leading-[1.2] font-semibold tracking-[-0.04rem] text-black [word-break:break-word]">
                 {service.title}
               </p>
             </div>
 
-            <div className="relative z-10 mt-auto flex flex-col items-center gap-4 text-center">
+            <div className="relative z-10 flex flex-col items-center gap-4 text-center">
               <p className="font-(family-name:--font-inter-sans) text-[1.375rem] leading-none font-medium tracking-[-0.03rem] text-white [word-break:break-word]">
                 {service.heading}
               </p>

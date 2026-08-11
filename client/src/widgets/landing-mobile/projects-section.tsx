@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
+import { useDragScroll } from "@/shared/lib/use-drag-scroll";
 import { Tag } from "@/shared/ui/tag";
 
 const PROJECT_IMAGES: Record<string, string> = {
@@ -15,6 +16,7 @@ export function ProjectsSectionMobile() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const projects = [...PROJECTS].reverse();
+  useDragScroll(scrollerRef);
 
   const handleScroll = () => {
     const el = scrollerRef.current;
@@ -35,7 +37,7 @@ export function ProjectsSectionMobile() {
       <div
         ref={scrollerRef}
         onScroll={handleScroll}
-        className="mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [scrollbar-width:none]"
+        className="mt-8 flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [scrollbar-width:none] active:cursor-grabbing touch-pan-x"
       >
         {projects.map((project, index) => (
           <article
