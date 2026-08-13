@@ -184,7 +184,7 @@ export function ServicesBanner() {
                 {active.techBadges.map(badge => (
                   <Tag
                     key={badge.name}
-                    icon={<Image alt="" width={20} height={20} className="pointer-events-none size-[1.25rem] object-cover" src={badge.icon} />}
+                    icon={<Image alt="" width={20} height={20} className="pointer-events-none object-contain" src={badge.icon} />}
                   >
                     {badge.name}
                   </Tag>

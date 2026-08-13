@@ -38,7 +38,7 @@ export function ServicesBannerMobile() {
         {SERVICES.map((service, index) => (
           <article
             key={service.title}
-            className="relative flex w-[21rem] shrink-0 snap-center flex-col overflow-clip rounded-[1.5rem] bg-brand px-4 pt-6 pb-8"
+            className="relative flex min-h-[34rem] w-[21rem] shrink-0 snap-center flex-col overflow-clip rounded-[1.5rem] bg-brand px-4 pt-6 pb-8"
           >
             <div className="pointer-events-none absolute inset-0">
               <Image alt="" fill sizes="336px" className="object-cover opacity-40" src="/landing/mobile/services-dots.svg" />
@@ -51,7 +51,7 @@ export function ServicesBannerMobile() {
               </p>
             </div>
 
-            <div className="relative z-10 flex flex-col items-center gap-4 text-center">
+            <div className="relative z-10 flex flex-1 flex-col items-center gap-4 text-center">
               <p className="font-(family-name:--font-inter-sans) text-[1.375rem] leading-none font-medium tracking-[-0.03rem] text-white [word-break:break-word]">
                 {service.heading}
               </p>
@@ -61,12 +61,12 @@ export function ServicesBannerMobile() {
                 ))}
               </p>
               {service.techBadges.length > 0 && (
-                <div className="flex flex-wrap items-center justify-center gap-2">
+                <div className="mt-auto flex min-h-[4.5rem] flex-wrap items-center justify-center gap-2">
                   {service.techBadges.map(badge => (
                     <Tag
                       key={badge.name}
-                      className="rounded-[0.625rem] border-[0.04375rem] px-3 py-2 text-[0.75rem] tracking-[-0.0225rem]"
-                      icon={<Image alt="" width={12} height={12} className="pointer-events-none size-3 object-cover" src={badge.icon} />}
+                      className="rounded-[0.625rem] border-[0.04375rem] px-3 py-2 text-[0.75rem] tracking-[-0.0225rem] [&_span:first-child]:size-3"
+                      icon={<Image alt="" width={12} height={12} className="pointer-events-none object-contain" src={badge.icon} />}
                     >
                       {badge.name}
                     </Tag>
