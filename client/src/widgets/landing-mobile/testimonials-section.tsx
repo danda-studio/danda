@@ -37,7 +37,7 @@ export function TestimonialsSectionMobile() {
         </div>
 
         <div className="mt-[4.75rem] overflow-hidden">
-          <div ref={scrollerRef} className="flex cursor-grab snap-x snap-mandatory items-start gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] active:cursor-grabbing touch-pan-x">
+          <div ref={scrollerRef} className="flex cursor-grab snap-x snap-mandatory items-start gap-2 overflow-x-auto px-6 pb-1 select-none [scrollbar-width:none] active:cursor-grabbing touch-pan-x touch-pan-y [&_img]:pointer-events-none">
             {TESTIMONIALS.map(testimonial => (
               <div
                 key={testimonial.id}

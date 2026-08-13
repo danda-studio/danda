@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { SERVICES } from "@/entities/service";
 import { useDragScroll } from "@/shared/lib/use-drag-scroll";
+import { getCenteredCarouselIndex } from "@/shared/lib/get-centered-carousel-index";
 import { Button } from "@/shared/ui/button";
 import { BoxiconsSend } from "@/shared/ui/icons/boxicons";
 import { Tag } from "@/shared/ui/tag";
@@ -24,10 +25,7 @@ export function ServicesBannerMobile() {
     const el = scrollerRef.current;
     if (!el)
       return;
-    const cardWidth = el.firstElementChild?.clientWidth ?? 1;
-    const gap = 12;
-    const index = Math.round(el.scrollLeft / (cardWidth + gap));
-    setActiveIndex(Math.min(Math.max(index, 0), SERVICES.length - 1));
+    setActiveIndex(getCenteredCarouselIndex(el));
   };
 
   return (
@@ -35,7 +33,7 @@ export function ServicesBannerMobile() {
       <div
         ref={scrollerRef}
         onScroll={handleScroll}
-        className="flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto [scrollbar-width:none] active:cursor-grabbing touch-pan-x"
+        className="flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto select-none [scrollbar-width:none] active:cursor-grabbing touch-pan-x touch-pan-y [&_img]:pointer-events-none"
       >
         {SERVICES.map((service, index) => (
           <article

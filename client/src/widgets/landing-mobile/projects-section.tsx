@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { ProjectCounter, PROJECTS } from "@/entities/project";
 import { useDragScroll } from "@/shared/lib/use-drag-scroll";
+import { getCenteredCarouselIndex } from "@/shared/lib/get-centered-carousel-index";
 import { Tag } from "@/shared/ui/tag";
 
 const PROJECT_IMAGES: Record<string, string> = {
@@ -22,10 +23,7 @@ export function ProjectsSectionMobile() {
     const el = scrollerRef.current;
     if (!el)
       return;
-    const cardWidth = el.firstElementChild?.clientWidth ?? 1;
-    const gap = 12;
-    const index = Math.round(el.scrollLeft / (cardWidth + gap));
-    setActiveIndex(Math.min(Math.max(index, 0), projects.length - 1));
+    setActiveIndex(getCenteredCarouselIndex(el));
   };
 
   return (
@@ -37,7 +35,7 @@ export function ProjectsSectionMobile() {
       <div
         ref={scrollerRef}
         onScroll={handleScroll}
-        className="mt-8 flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [scrollbar-width:none] active:cursor-grabbing touch-pan-x"
+        className="mt-8 flex cursor-grab snap-x snap-mandatory gap-3 overflow-x-auto pb-1 select-none [scrollbar-width:none] active:cursor-grabbing touch-pan-x touch-pan-y [&_img]:pointer-events-none"
       >
         {projects.map((project, index) => (
           <article

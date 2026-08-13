@@ -49,6 +49,11 @@ export const SERVICES: ServiceState[] = [
     description: [
       { text: "Дорабатываем, улучшаем и развиваем продукт по мере роста задач и бизнеса", dim: false },
     ],
-    techBadges: [],
+    techBadges: [
+      { name: "Next.js", icon: "/landing/desktop-6/image276.png" },
+      { name: "Figma", icon: "/landing/desktop-6/tech-figma.png" },
+      { name: "React Native", icon: "/landing/desktop-6/tech-reactnative.png" },
+      { name: "Vue.js", icon: "/landing/desktop-6/image278.png" },
+    ],
   },
 ];

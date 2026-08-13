@@ -180,7 +180,11 @@ export function ProjectsSection() {
   const card2 = useCardMotion(step, 2);
 
   return (
-    <section id="projects" className="relative -mt-[17.875rem] px-6 py-16">
+    <section id="projects" className="relative z-10 -mt-[17.875rem] px-6 py-16">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-white [mask-image:linear-gradient(to_bottom,transparent_0%,black_6.5rem)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_6.5rem)]"
+      />
       <div className="mx-auto flex max-w-[87rem] items-baseline justify-between">
         <h2 className="font-(family-name:--font-manrope-sans) text-[3.5rem] leading-none font-semibold tracking-[-0.105rem] whitespace-nowrap text-black [word-break:break-word]">
           <BlurredStaggerText text="Наши проекты" />

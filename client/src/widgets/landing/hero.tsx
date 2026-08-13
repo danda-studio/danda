@@ -29,7 +29,9 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto mt-[-8.3125rem] w-full">
-        <div className="mx-auto flex size-[54.9525rem] max-w-full items-center justify-center">
+        <div
+          className="mx-auto flex size-[54.9525rem] max-w-full items-center justify-center [mask-image:linear-gradient(to_bottom,black_0%,black_52%,rgba(0,0,0,0.55)_72%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_52%,rgba(0,0,0,0.55)_72%,transparent_92%)]"
+        >
           <div className="flex-none -rotate-6" data-name="ChatGPT Image 18 янв. 2026 г., 02_42_20 1">
             <Image
               alt=""
@@ -61,9 +63,9 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="pointer-events-none absolute top-[41.125rem] left-0 flex h-[26.125rem] w-[90rem] items-center justify-center">
+      <div className="pointer-events-none absolute top-[38.5rem] left-0 z-[1] flex h-[32rem] w-[90rem] items-center justify-center">
         <div className="flex-none -scale-y-100">
-          <div className="h-[26.125rem] w-[90rem] bg-gradient-to-b from-white from-[27.195%] to-(--dd-fade-white-transparent) to-[63.278%]" />
+          <div className="h-[32rem] w-[90rem] bg-gradient-to-b from-white from-[8%] via-white/90 via-[32%] via-white/35 via-[58%] to-(--dd-fade-white-transparent) to-[82%]" />
         </div>
       </div>
     </section>

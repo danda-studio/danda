@@ -84,10 +84,9 @@ body {
      - 320px – 430px: fluid against the 360px mobile reference (phone widths).
      - 430px – md (768px): frozen at the 430px value (the widest common phone) — without
        this, the mobile composition keeps scaling linearly with the vw formula all the way
-       to 768px and balloons to ~2x size on tablet-width windows before the layout switches
-       to the desktop composition, overflowing the viewport.
-     - md – 1440px: fluid against the 1440px desktop reference, so tablet/laptop windows
-       narrower than the full design width scale the desktop layout down instead of
+       to 768px and balloons before the layout switches to the desktop composition.
+     - md – 1440px: fluid against the 1440px desktop reference, so tablets and laptop
+       windows narrower than the full design width scale the desktop layout down instead of
        overflowing or clipping.
      - 1440px and up: frozen at 16px, matching the desktop layout's native size. */
 :root {
