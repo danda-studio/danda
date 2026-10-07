@@ -3,7 +3,7 @@
 #
 # Developed by Danda Team.
 
-name: Deploy Frontend to Production
+name: Deploy Backend to Production
 
 on:
   push:
