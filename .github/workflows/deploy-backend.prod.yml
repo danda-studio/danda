@@ -1,9 +1,9 @@
-﻿﻿# Copyright © 2026 Danda Studio.
+﻿# Copyright © 2026 Danda Studio.
 # All rights reserved.
 #
 # Developed by Danda Team.
 
-name: Build & Deploy Backend (.NET)
+name: Deploy Backend to Production
 
 on:
   push:
