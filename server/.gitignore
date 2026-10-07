@@ -364,12 +364,12 @@ FodyWeavers.xsd
 
 *.sqlite
 
-/.vs/Khan-Cargo/CopilotIndices/17.14.1561.44479/CodeChunks.db
-/.vs/Khan-Cargo/CopilotIndices/17.14.1561.44479/SemanticSymbols.db
-/.vs/Khan-Cargo/FileContentIndex/e8395766-a035-4eb6-9447-06a9893a0a1d.vsidx
-/.vs/Khan-Cargo/v17/.wsuo
-/.vs/Khan-Cargo/v17/DocumentLayout.backup.json
-/.vs/Khan-Cargo/v17/DocumentLayout.json
+/.vs/Danda-Form/CopilotIndices/17.14.1561.44479/CodeChunks.db
+/.vs/Danda-Form/CopilotIndices/17.14.1561.44479/SemanticSymbols.db
+/.vs/Danda-Form/FileContentIndex/e8395766-a035-4eb6-9447-06a9893a0a1d.vsidx
+/.vs/Danda-Form/v17/.wsuo
+/.vs/Danda-Form/v17/DocumentLayout.backup.json
+/.vs/Danda-Form/v17/DocumentLayout.json
 /.vs/ProjectSettings.json
 /.vs/slnx.sqlite
 /.vs/VSWorkspaceState.json

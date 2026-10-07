@@ -1,0 +1,71 @@
+﻿# Copyright © 2026 Danda Studio.
+# All rights reserved.
+#
+# Developed by Danda Team.
+
+name: Deploy Frontend to Production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "client/**"
+      - ".github/workflows/deploy-frontend.prod.yml"
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment: frontend.prod
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: npm i
+        working-directory: ./client
+
+      - name: Get API Schema
+        run: npm run generate:api
+        working-directory: ./client
+        env:
+          API_URL: https://api.danda-studio.com
+          NEXT_PUBLIC_SITE_URL: https://danda-studio.com
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: 0x4AAAAAAD9IEU79BTCBB6ld
+
+      - name: Build project
+        run: npm run build
+        working-directory: ./client
+        env:
+          API_URL: https://api.danda-studio.com
+          NEXT_PUBLIC_SITE_URL: https://danda-studio.com
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: 0x4AAAAAAD9IEU79BTCBB6ld
+
+      - name: Deploy to server
+        uses: appleboy/scp-action@v0.1.5
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "client/.next/*,client/node_modules/*,client/public/*,client/package-lock.json,client/package.json"
+          target: "/var/client"
+          rm: true
+      - name: Restart client via PM2
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            pm2 restart client

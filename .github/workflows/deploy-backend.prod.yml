@@ -1,0 +1,68 @@
+﻿﻿# Copyright © 2026 Danda Studio.
+# All rights reserved.
+#
+# Developed by Danda Team.
+
+name: Build & Deploy Backend (.NET)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "server/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment: backend.prod
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore server/Danda-Form/Danda-Form/Danda-Form.csproj
+
+      - name: Build and publish
+        run: dotnet publish server/Danda-Form/Danda-Form/Danda-Form.csproj -c Release -o publish --no-restore
+
+      - name: Clean directory
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo systemctl stop danda-studio.service || true
+            rm -rf ${{ secrets.DEPLOY_PATH }}/* || true
+            mkdir -p ${{ secrets.DEPLOY_PATH }}
+
+      - name: Deploy to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "publish/*"
+          target: ${{ secrets.DEPLOY_PATH }}
+
+      - name: Restart backend service
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo systemctl daemon-reload
+            sudo systemctl restart danda-studio.service
+            # Ждем немного и проверяем статус
+            sleep 5
+            sudo systemctl status danda-studio.service --no-pager
