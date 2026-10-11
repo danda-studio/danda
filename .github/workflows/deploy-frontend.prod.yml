@@ -12,6 +12,7 @@ on:
     paths:
       - "client/**"
       - ".github/workflows/deploy-frontend.prod.yml"
+  workflow_dispatch:
 
 jobs:
   build-deploy:
