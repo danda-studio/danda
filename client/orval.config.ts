@@ -1,9 +1,13 @@
-import { defineConfig } from "orval";
+﻿import { defineConfig } from "orval";
+
+const apiUrl = process.env.API_URL
+    ? `${process.env.API_URL.replace(/\/$/, "")}/swagger/v1/swagger.json`
+    : "./api/openapi.yaml";
 
 // TODO: положить сюда реальный OpenAPI-спек (./api/openapi.yaml) и запустить `yarn generate:api`.
 export default defineConfig({
   "danda": {
-    input: "./api/openapi.yaml",
+    input: apiUrl,
     output: {
       mode: "tags-split",
       target: "./src/shared/api/generated/endpoints.ts",
@@ -20,7 +24,7 @@ export default defineConfig({
     },
   },
   "danda-zod": {
-    input: "./api/openapi.yaml",
+    input: apiUrl,
     output: {
       mode: "tags-split",
       client: "zod",
