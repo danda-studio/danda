@@ -11,7 +11,7 @@ on:
       - main
     paths:
       - "server/**"
-      - ".github/workflows/deploy.yml"
+      - ".github/workflows/deploy-backend.prod.yml"
   workflow_dispatch:
 jobs:
   build-deploy:
