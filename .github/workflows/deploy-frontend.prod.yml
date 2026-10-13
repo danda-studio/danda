@@ -47,8 +47,8 @@ jobs:
         run: npm run build
         working-directory: ./client
         env:
-          API_URL: https://api.danda-studio
-          NEXT_PUBLIC_SITE_URL: https://danda-studio
+          API_URL: https://api.danda.studio
+          NEXT_PUBLIC_SITE_URL: https://danda.studio
           NEXT_PUBLIC_TURNSTILE_SITE_KEY: 0x4AAAAAAD9IEU79BTCBB6ld
 
       - name: Deploy to server
@@ -63,13 +63,17 @@ jobs:
           strip_components: 1
           rm: true
       - name: Restart client via PM2
-        uses: appleboy/ssh-action@v0.1.7
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
           port: 22022
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            pm2 restart client
+            cd /var/frontend/danda
+            if pm2 describe client > /dev/null 2>&1; then
+              pm2 restart client --update-env
+            else
+              pm2 start npm --name client -- start
+            fi
+            pm2 save
