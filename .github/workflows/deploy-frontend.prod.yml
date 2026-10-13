@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Enable Corepack
         run: corepack enable
@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "client/.next/*,client/node_modules/*,client/public/*,client/package-lock.json,client/package.json"
-          target: "/var/client"
+          target: "/var/frontend/danda/"
           rm: true
       - name: Restart client via PM2
         uses: appleboy/ssh-action@v0.1.7
