@@ -1,0 +1,71 @@
+openapi: 3.0.1
+info:
+  title: Danda-Form
+  version: "1.0"
+paths:
+  /api/Contact/contact:
+    post:
+      tags:
+        - Contact
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+                Description:
+                  type: string
+                Budget:
+                  type: string
+                ContactType:
+                  $ref: "#/components/schemas/ContactType"
+                ContactValue:
+                  type: string
+                File:
+                  type: string
+                  format: binary
+            encoding:
+              Name:
+                style: form
+              Description:
+                style: form
+              Budget:
+                style: form
+              ContactType:
+                style: form
+              ContactValue:
+                style: form
+              File:
+                style: form
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/SendContactResponse"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SendContactResponse"
+            text/json:
+              schema:
+                $ref: "#/components/schemas/SendContactResponse"
+components:
+  schemas:
+    ContactType:
+      enum:
+        - Telegram
+        - WhatsApp
+        - Email
+      type: string
+    SendContactResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
