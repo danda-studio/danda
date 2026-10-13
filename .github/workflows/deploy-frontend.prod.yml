@@ -47,8 +47,8 @@ jobs:
         run: npm run build
         working-directory: ./client
         env:
-          API_URL: https://api.danda-studio.com
-          NEXT_PUBLIC_SITE_URL: https://danda-studio.com
+          API_URL: https://api.danda-studio
+          NEXT_PUBLIC_SITE_URL: https://danda-studio
           NEXT_PUBLIC_TURNSTILE_SITE_KEY: 0x4AAAAAAD9IEU79BTCBB6ld
 
       - name: Deploy to server
@@ -60,6 +60,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "client/.next/*,client/node_modules/*,client/public/*,client/package-lock.json,client/package.json"
           target: "/var/frontend/danda/"
+          strip_components: 1
           rm: true
       - name: Restart client via PM2
         uses: appleboy/ssh-action@v0.1.7
